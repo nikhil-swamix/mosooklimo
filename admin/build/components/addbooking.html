@@ -1,0 +1,268 @@
+<section id="adminbookingform ">
+      <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/js/intlTelInput-jquery.min.js" integrity="sha512-+xuLsxQN3JBrnBSAr/vOlUqZfQ0OwpqZfdbuiQVpzjd5Y85F8F2AyzP4YNVDrpR29EolzELxc62br5gWK51phQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script>
+      <style>
+        .blink_me {
+          animation: blinker 0.1s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .elem-group label{
+          color: #344767;
+        }
+      </style>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Admin Booking</h3>
+              <button type="button" class="btn-close text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mb-0 pb-0">
+              <div class="flex-row-reverse d-flex">
+                <button id="testbtn"  class="btn btn-secondary text-white py-0 my-0" onclick="autofill()">Test</button>
+              </div>
+              <form id="bookingform">
+                <div class="row">
+                  <div class="col-auto ">
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="name">User Name</label><br>
+                      <input type="text" id="name" name="visitor_name" placeholder="" pattern=[A-Z\sa-z]{3,20} required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="email">User E-mail</label><br>
+                      <input type="email" id="email" name="visitor_email" placeholder="" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="paddress">Pickup Address</label><br>
+                      <input type="text" id="paddress" name="paddress" placeholder="" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="daddress">Destination Address</label><br>
+                      <input type="text" id="daddress" name="daddress" placeholder="" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="phone">User Phone</label><br>
+                      <input type="tel" id="phone" name="visitor_phone" placeholder="" pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+                      <script>
+                        
+
+                      </script>
+                    </div>
+                    <!-- <div class="elem-group">
+                      <label for="message">Additional Instructions</label><br>
+                      <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
+                    </div> -->
+                  </div>
+                  <div class="col-auto mr-auto">
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="adult">No. of Adults</label><br> 
+                      <input type="number" id="adult" name="total_adults" min="1" required>
+                    </div>            
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="baggage">No. of Baggage</label><br> 
+                      <input type="number" id="baggage" name="total_baggage" min="0" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="checkin-date">Pickup Date</label><br> 
+                      <input type="date" id="checkin-date" name="checkin-date" min="2022-01-01" max="2999-12-31" required>
+                      <script type="text/javascript">
+                        var tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate()+1)
+                        $("#checkin-date").attr('min', tomorrow.toJSON().slice(0,10));  
+                      </script>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="checkin-time">Pickup Time</label><br> 
+                      <input type="time" id="checkin-time" name="checkin-time" step="60" required>
+                    </div>
+                    <div class="elem-group mt-2">
+                      <label for="carclass" class="my-0">Select car</label><br>  
+                      <select id="carclass" class="p-1" name="carclass" required>
+                        <option value="">Choose Car Type</option>
+                        <option value="economy">economy</option>
+                        <option value="sedan">sedan</option>
+                        <option value="business">business</option>
+                        <option value="minivan">minivan</option>
+                        <option value="minibus">minibus</option>
+                        <option value="suv">suv</option>
+                        <option value="luxury">luxury</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row px-0 pt-3">
+                  <h3>Add-Ons</h3>
+                  <div class="col-auto">
+                    <div class="form-check px-0">
+                      <input class="form-check-input" type="checkbox" value="" id="addonMeetGreet">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-people-carry-box"></i>
+                        Meet & Greet
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div class="form-check px-0">
+                      <input class="form-check-input" type="checkbox" value="" id="addonPets">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-dog"></i> 
+                        With Pets
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div class="form-check px-0">
+                      <input class="form-check-input" type="checkbox" value="" id="addonExtraRoute">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                        Extra Route
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer pb-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button class="btn btn-success" onclick="submitOrder()">Submit</button>
+                </div>
+              </form>
+            </div>
+
+            <script type="text/javascript">
+              // const myrandom=Math.floor(Math.random() * 100);
+              function setCountryPhone(arg) {
+                $("#phone").selectCountry(arg)
+              }
+              
+              
+              phoneInstance= $("#phone").intlTelInput({               
+                allowDropdown: true,
+                autoHideDialCode: true,
+                autoPlaceholder: "polite",
+                customPlaceholder: null,
+                dropdownContainer: null,
+                excludeCountries: [],
+                formatOnDisplay: true,
+                geoIpLookup: null,
+                hiddenInput: "",
+                initialCountry: "",
+                localizedCountries: null,
+                nationalMode: true,
+                onlyCountries: [],
+                placeholderNumberType: "MOBILE",
+                preferredCountries: [ "us", "gb", "in", 'ae' ],
+                separateDialCode: false,
+                utilsScript: "",
+              });
+
+              function futureDate(){
+                var tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate()+Math.floor(Math.random() * 100))
+                return tomorrow.toJSON().slice(0,10)
+              }
+              function autofill(){
+                $('#testbtn').append('<i class="fa-solid fa-spinner blink_me"></i>')
+                
+                let RANDOMIZE_INPUT_FIELDS = $.get('https://api.mockaroo.com/api/7fc66d10?count=1&key=25c55040', function(data) {
+                  console.log(data)
+                  data=data[0]
+                  let ftime= data.fromTime;
+                  if (data.fromTime.toString().length < 5) {
+                    ftime = '0' + ftime
+                  };
+                  // 
+                  $("#name").val(data.name);
+                  $("#email").val(data.email);
+                  $("#paddress").val(data.pickupAddress);
+                  $("#daddress").val(data.destinationAddress);
+                  $("#phone").val(data.phone);
+                  $("#adult").val(Math.floor(Math.random() * 5)+1);
+                  $("#baggage").val(Math.floor(Math.random() * 5));
+                  $("#checkin-date").val(futureDate);
+                  $("#checkin-time").val(ftime);
+                  $("#carclass").val($("#carclass option").slice(1)[Math.floor(Math.random() * $("#carclass option").slice(1).length)].value);
+                  // REMOVE Responsive LOADER
+                  $('#testbtn i').remove()
+                });
+                // $("#checkin-date").val(tomorrow.toISOString().split("T")[0])
+              }
+
+              function validateform(){
+
+                $('#bookingform input').each(function(index, el) {
+                  console.info(el,el.checkValidity())
+                  if (!el.checkValidity()) {
+                    return false
+                  }
+                });
+                return true
+              }
+
+              $('form button').on("click",function(e){
+                  e.preventDefault();
+                  // submitOrder()
+              });
+
+              function submitOrder (){
+
+                if (!validateform()){
+                  // alert('please fill the form properly')
+                  return
+                }
+
+                postdata={
+                  userEmail: $("#email").val() ,
+                  userName: $("#name").val() ,
+                  phoneNumber: $("#phone").val(),
+                  fromDate: `${$("#checkin-date").val()}T${$("#checkin-time").val()}:00`,
+                  pickupAddress: $("#paddress").val(),
+                  destinationAddress: $("#daddress").val(),
+                  commentNote: "",
+                  orderItemClass: $("#carclass").val(),
+                  noOfAdultPassenger: $("#adult").val(),
+                  noOfBaggages: $("#baggage").val(),
+                  isPets:$("#addonPets").is(':checked'),
+                  meetGreet:$("#addonMeetGreet").is(':checked'),
+                  extraStop:$("#addonExtraRoute").is(':checked'),
+                }
+
+                $.ajax({
+                  type: "POST",
+                  contentType: "application/json",
+                  url: '/api/orders/',
+                  data: JSON.stringify(postdata),
+                  headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                  dataType: "json",
+                  success: (data,textstatus,xhr)=>{
+                    console.log(data);
+                    Swal.fire('Booked Successfully').then(() => location = location);
+                  },
+                  error: (data,textstatus,xhr)=>{
+                    // alert('user not loggedin')
+                    console.log(data)
+                    Swal.fire(
+                      "Request Has Failed",
+                      JSON.stringify(data.responseJSON.message),
+                      'error'
+                    )
+                  }
+
+                });
+              }
+                //   meetGreet
+                //   isPets
+                //   extraStop
+                // }
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>

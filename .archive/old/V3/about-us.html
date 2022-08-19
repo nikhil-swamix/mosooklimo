@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>About Us</title>
+	<link rel="stylesheet" href="">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style type="text/css">
+	body{
+		color: #000;
+		font-family: Roboto;
+	}
+
+	.text-justify{
+		text-align: justify;
+	}
+</style>
+<style> @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); </style>
+<body>
+	<section data-load="./components/menu.html"></section>
+
+	<section style="max-height: 66vh;overflow: hidden;">
+		<!-- <img width="100%" src="./images/about-us-banner.jpg"> -->
+		<div class="row">
+			<div class="col-lg-8" style="overflow: hidden;" >
+				<iframe style="margin-top: -5em; transform: scale(1.1);" width="100%" height="700" src="https://www.youtube.com/embed/k3f8bjgSWE8?autoplay=1&mute=0&rel=0&showinfo=0&controls=0&loop=1&?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" mute="" allowfullscreen></iframe>
+			</div>
+			<div class="col-lg-4" style="background: #000;">
+				<div id="wrapper">
+					<h2 id="text" class="channel-split-wrapper text-center">
+						MosookLimo
+					</h2>
+					<p class="text-justify text-white p-2 rounded">
+						Mosook Limo is driven to provide consistently superior service that will exceed your every expectation. We go the extra mile to deliver exceptional attention to details, ensuring that you travel safely, comfortably and confidently. <br><br> At Mosook Limo Service, everyone is a VIP client. We understand that you expect the best when renting luxury transportation. We are constantly improving on our outstanding service and striving to exceed the expectations of all clients
+					</p>
+					<style type="text/css" media="screen">
+						#wrapper {
+							/*height: 100vh;*/
+							/*display: flex;*/
+							justify-content: center;   
+							align-items: center;
+						}
+
+						.channel-split-wrapper {
+							position: relative;
+							font-size: 64px;
+						}
+
+						.channel-split-static {
+							opacity: 0;
+						}
+
+						.channel-split {
+							position: absolute;
+							top: 0;
+							left: 0;
+							mix-blend-mode: difference;   
+						}
+
+						.channel-split-red {
+							color: #f00;
+							animation: ANIMATE-RED 2000ms infinite;
+						}
+
+						.channel-split-green {
+							color: #0f0;
+						}
+
+						.channel-split-blue {
+							color: #00f;
+							animation: ANIMATE-BLUE 2000ms infinite;
+						}
+
+						@keyframes ANIMATE-RED {
+							0% {
+								transform: translate(0, 0)
+							}
+							50% {
+								transform: translate(5px, 5px)
+							}
+							100% {
+								transform: translate(0, 0)
+							}
+						}
+
+						@keyframes ANIMATE-BLUE {
+							0% {
+								transform: translate(0, 0)
+							}
+							50% {
+								transform: translate(-5px, -5px)
+							}
+							100% {
+								transform: translate(0, 0)
+							}
+						}
+					</style>
+					<script>
+						function channelSplit(elem) {
+							if (elem) {
+								const inner = elem.innerHTML;
+								elem.innerHTML = "";
+
+								const spanHidden = document.createElement("span");
+								spanHidden.classList.add("channel-split-static");
+								spanHidden.innerHTML = inner;
+								elem.appendChild(spanHidden);
+
+								["red", "green", "blue"].forEach(x => {
+									const span = document.createElement("span");
+									span.classList.add("channel-split");
+									span.classList.add(`channel-split-${x}`);
+									span.innerHTML = inner;
+									elem.appendChild(span);
+								});
+							}
+						}
+
+						channelSplit(document.getElementById("text"))
+					</script>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+	
+	<section class="container">
+		<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+		<h1 class="text-center">OUR TEAM</h1>
+		<div id="teamswiper" class="swiper py-3">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+				<!-- Slides -->
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/team/1.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3>Manager</h3>
+							<p>Mr. Lorem ipsum is most experienced, dolor sit amet consectetur adipisicing elit. Pariatur distinctio magni facilis asperiores rem. Sed vel magnam quam ut suscipit consectetur, qui quasi officia assumenda, quia quae, adipisci iste sit.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/team/2.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3>Chairman</h3>
+							<p>Mr. Lorem ipsum is most experienced dolor, sit amet consectetur adipisicing elit. Officiis animi aperiam, mollitia sapiente hic voluptatum earum necessitatibus tempora esse magnam blanditiis ipsa! Facere, neque? Fuga ducimus accusamus, debitis.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/team/3.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3>Investor</h3>
+							<p>Mr. Lorem, is most experienced ipsum dolor sit amet consectetur adipisicing elit. Nisi est voluptates quisquam pariatur esse veritatis dolorum voluptate enim sunt tempora, at dicta optio veniam aliquid vero voluptatem ea nam dolore!</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/team/4.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h3>CEO</h3>
+							<p>Mr. Lorem ipsum is most experienced dolor sit amet consectetur adipisicing elit. Nesciunt commodi quis, magni.  eos corporis delectus accusantium unde in ducimus, voluptatum laudantium fugiat sed cupiditate maiores nihil nulla sunt?</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination pt-5 mt-5"></div>
+
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev pt-5 mt-5"></div>
+			<div class="swiper-button-next pt-5 mt-5"></div>
+
+			<!-- If we need scrollbar -->
+			<!-- <div class="swiper-scrollbar"></div> -->
+		</div>
+		<script>
+			const teamswiper = new Swiper('#teamswiper', {
+			// Optional parameters
+			direction: 'horizontal',
+			loop: true,
+			slidesPerView:4,
+			speed: 5000,
+			autoplay:{
+				delay:1000,
+			},
+
+			// If we need pagination
+			pagination: {
+				el: '.swiper-pagination',
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+
+			// And if we need scrollbar
+			// scrollbar: {
+			//   el: '.swiper-scrollbar',
+			// },
+		});
+	</script>
+	</section>
+
+	<section id="about-content" class=" text-capitalize text-justify  py-5" style="background-image: url('./images/award.jpg'); height: 66vh;">
+		<style type="text/css">
+			h2{
+				text-align: center;
+				text-transform: uppercase;
+			}
+			p{
+				text-align: justify;
+			}
+			#about-content{
+
+			}
+		</style>
+
+		<div class="row">
+			<div class="row col-lg-12 ">
+				<div class="col-lg-6 text-justify text-white p-5 rounded" style="background-color: #000e;">
+					<h2>Awards</h2>
+					<p class="px-5">
+						Our recruitment methods enable us to bring-on board persons with a strong sense of Service Aptitude. The best practices of several industries are studied and implemented to serve customers betterment.
+					</p>
+					<ul class="row">
+						<li class=" mx-2 p-2 rounded">The Management Got Certificate of “APPRECIATION” from USA Embassy Riyadh, The service provided to President of United State delegation during visit in Riyadh in 2014.</li>
+						<li class=" mx-2 p-2 rounded">Our Management Achieved the contract for chauffeured service provided to CHINA-SAOUTH AFRICAN-And BARAZIL Embassies delegations.</li>
+					</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+	</section>
+
+	<section class="container py-3">
+		<link rel="stylesheet"href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+		<style type="text/css">
+			#fleetswiper img{
+				display: block;
+				height: 50vh;
+				width: auto;
+			}
+			#fleetswiper .swiper-button-*,.swiper-pagination{
+				padding-top: 3em;
+			}
+		</style>
+		<h2 class="">OUR FLEET</h2>
+		<div id="fleetswiper" class="swiper py-3">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+				<!-- Slides -->
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/cars/1.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/cars/2.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/cars/3.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/cars/4.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/cars/5.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card" >
+						<img src="./images/cars/6.webp" class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination pt-5 mt-5"></div>
+
+			<!-- If we need navigation buttons -->
+
+
+			<!-- If we need scrollbar -->
+			<!-- <div class="swiper-scrollbar"></div> -->
+		</div>
+		<script>
+			const swiper = new Swiper('#fleetswiper', {
+			  // Optional parameters
+			  direction: 'horizontal',
+			  loop: true,
+			  slidesPerView:4,
+			  autoplay:true,
+
+			  // If we need pagination
+			  pagination: {
+			    el: '.swiper-pagination',
+			  },
+
+			  // Navigation arrows
+			  navigation: {
+			    nextEl: '.swiper-button-next',
+			    prevEl: '.swiper-button-prev',
+			  },
+
+			  // And if we need scrollbar
+			  // scrollbar: {
+			  //   el: '.swiper-scrollbar',
+			  // },
+			});
+		</script>
+	</section>
+
+	<section id="info-cards" class="py-5" style="background-color: #000;">
+		<div class="row">
+			<div class="card col py-1 px-0 mx-5 border" style="width: 18rem;">
+				<img width="200px" class="img-fluid text-center mx-auto" src="./images/target1.png" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h2 class="card-title">Vision</h2>
+					<p class="card-text">We will be the provider of choice for our customers and a model of excellence for our industry. provide worldclass bespoke srevices to our clients. meet and exceed expectations</p>
+				</div>
+			</div>
+			<div class="card col py-1 px-0 mx-5 border" style="width: 18rem;">
+				<img width="200px" class="img-fluid text-center mx-auto" src="./images/target.png" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h2 class="card-title">Mission</h2>
+					<p class="card-text">To set a new benchmark for chauffeured car with driver service by exceeding the expectations of our valued clients each and every time, while providing the safest, most convenient and elegant limousine transportation.</p>
+				</div>
+			</div>
+
+			<div class="card col py-1 px-0 mx-5 border" style="width: 18rem;">
+				<img width="200px" class="img-fluid text-center mx-auto" src="./images/team.png" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h2 class="card-title">Values</h2>
+					<p> The Values of the companies are: </p>
+					<ul>
+						<li>Customer First</li>
+						<li>Make it easy</li>
+						<li>Be Respectful</li>
+						<li>Keep Promises</li>
+						<li>Performance Driven</li>
+						<li>Staff Empowerment</li>				
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+
+
+
+	<section data-load="./components/footer.html"></section>
+	<script type="module" src="./assets/js/swamix.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7ba49bf9.css",
+    "main.js": "/static/js/main.e14bb048.js",
+    "static/media/car-bg.jpg": "/static/media/car-bg.c18c27c712d4d906aa40.jpg",
+    "static/media/black.png": "/static/media/black.a9aa2cbba5704d2f75c2.png",
+    "static/media/bugati.jpeg": "/static/media/bugati.60ac9ad8b20f213bd6e8.jpeg",
+    "static/media/plane.jpg": "/static/media/plane.4d0b56462f2c9bb99192.jpg",
+    "static/media/map.jpg": "/static/media/map.29d1cd47f55d7cefecf1.jpg",
+    "static/media/about-banner.jpeg": "/static/media/about-banner.31c447119f36ee3ef5a3.jpeg",
+    "static/media/royal.webp": "/static/media/royal.2de685cd8a41f2445fbd.webp",
+    "static/media/faq.webp": "/static/media/faq.8b55eb89aed80c4f9c36.webp",
+    "static/media/mos.png": "/static/media/mos.a745556a1788c1544f73.png",
+    "static/media/logo.png": "/static/media/logo.060817610b59b0614032.png",
+    "static/media/bmw.webp": "/static/media/bmw.263ba616298b4ffb94d3.webp",
+    "index.html": "/index.html",
+    "main.7ba49bf9.css.map": "/static/css/main.7ba49bf9.css.map",
+    "main.e14bb048.js.map": "/static/js/main.e14bb048.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ba49bf9.css",
+    "static/js/main.e14bb048.js"
+  ]
+}

@@ -1,0 +1,720 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title> Material Dashboard </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+  <script src="./assets/js/swamix.js" type="text/javascript" charset="utf-8" ></script>
+
+  <!--  -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <!--  -->
+  <link href="./assets/css/swamix.css" rel="stylesheet" /> 
+  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style type="text/css">
+  body {
+    /*background-image: url(https://wallpaperaccess.com/full/2544660.jpg);*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://www.wharftt.com/wp-content/uploads/2021/04/feat-1.jpg) ;
+    background-size: cover;
+
+  }
+  main{
+    height: 100vh;
+  }
+  #bookingtable{
+    opacity: 0.9;
+  }
+</style>
+
+<body class="g-sidenav-show  bg-gray-200">
+  <aside data-load="components/sidemenu.html" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start   bg-gradient-light" id="sidenav-main"></aside>
+  
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0  shadow-none border-radius-xl " id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white" ><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Reservations</li>
+          </ol>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+           
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <section id="adminbookingform ">
+      <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/js/intlTelInput-jquery.min.js" integrity="sha512-+xuLsxQN3JBrnBSAr/vOlUqZfQ0OwpqZfdbuiQVpzjd5Y85F8F2AyzP4YNVDrpR29EolzELxc62br5gWK51phQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script>
+      <style>
+        .blink_me {
+          animation: blinker 0.1s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .elem-group label{
+          color: #344767;
+        }
+      </style>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Admin Booking</h3>
+              <button type="button" class="btn-close text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mb-0 pb-0">
+              <div class="flex-row-reverse d-flex">
+                <button id="testbtn"  class="btn btn-secondary text-white py-0 my-0" onclick="autofill()">Test</button>
+              </div>
+              <form id="bookingform">
+                <div class="row">
+                  <div class="col-auto ">
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="name">User Name</label><br>
+                      <input type="text" id="name" name="visitor_name" placeholder="" pattern=[A-Z\sa-z]{3,20} required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="email">User E-mail</label><br>
+                      <input type="email" id="email" name="visitor_email" placeholder="" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="paddress">Pickup Address</label><br>
+                      <input type="text" id="paddress" name="paddress" placeholder="" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="daddress">Destination Address</label><br>
+                      <input type="text" id="daddress" name="daddress" placeholder="" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="phone">User Phone</label><br>
+                      <input type="tel" id="phone" name="visitor_phone" placeholder="" pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+                      <script>
+                        
+
+                      </script>
+                    </div>
+                    <!-- <div class="elem-group">
+                      <label for="message">Additional Instructions</label><br>
+                      <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
+                    </div> -->
+                  </div>
+                  <div class="col-auto mr-auto">
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="adult">No. of Adults</label><br> 
+                      <input type="number" id="adult" name="total_adults" min="1" required>
+                    </div>            
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="baggage">No. of Baggage</label><br> 
+                      <input type="number" id="baggage" name="total_baggage" min="0" required>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="checkin-date">Pickup Date</label><br> 
+                      <input type="date" id="checkin-date" name="checkin-date" min="2022-01-01" max="2999-12-31" required>
+                      <script type="text/javascript">
+                        var tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate()+1)
+                        $("#checkin-date").attr('min', tomorrow.toJSON().slice(0,10));  
+                      </script>
+                    </div>
+                    <div class="elem-group mt-1">
+                      <label class="my-0" for="checkin-time">Pickup Time</label><br> 
+                      <input type="time" id="checkin-time" name="checkin-time" step="60" required>
+                    </div>
+                    <div class="elem-group mt-2">
+                      <label for="carclass" class="my-0">Car Class</label><br>  
+                      <select id="carclass" class="p-1" name="carclass" required>
+                        <option value="economy">premium sedan</option>
+                        <option value="sedan">sedan</option>
+                        <option value="business">business</option>
+                        <option value="minivan">minivan</option>
+                        <option value="minibus">minibus</option>
+                        <option value="suv">suv</option>
+                        <option value="luxury">luxury</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row px-0 pt-3 ">
+                  <h3>Add-Ons</h3>
+                  <div class="col-4">
+                    <div class="form-check px-0 ">
+                      <input class="form-check-input" type="checkbox" value="" id="addonMeetGreet">
+                      <br>
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-hand-peace"></i>
+                        Meet & Greet
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check px-0">
+                      <!-- <input class="form-check-input" type="checkbox" value="" > -->
+                      <input min="0" max="2" type="number" value="0" id="addonPets">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-dog"></i> 
+                        Pets Count
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check px-0">
+                      <!-- <input class="form-check-input" type="checkbox" value="" > -->
+                      <input min="0" max="3" type="number" value="0" id="addonExtraRoute">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                        Extra Stops
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check px-0">
+                      <!-- <input class="form-check-input" type="checkbox" value="" > -->
+                      <input min="0" max="2" type="number" value="0" id="addonBabySeat">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-baby"></i>
+                        Baby Seats
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check px-0">
+                      <!-- <input class="form-check-input" type="checkbox" value="" > -->
+                      <input min="0" max="2" type="number" value="0" id="addonBoosterSeat">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-child"></i>
+                        Booster Seats
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check px-0">
+                      <!-- <input class="form-check-input" type="checkbox" value="" > -->
+                      <input min="0" max="2" type="number" value="0" id="addonSpecialLuggage">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        <i class="fa-solid fa-cart-flatbed"></i>
+                        Special Luggage
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer pb-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button class="btn btn-success" onclick="submitOrder()">Submit</button>
+                </div>
+              </form>
+            </div>
+
+            <script type="text/javascript">
+              // const myrandom=Math.floor(Math.random() * 100);
+              function setCountryPhone(arg) {
+                $("#phone").selectCountry(arg)
+              }
+
+              phoneInstance= $("#phone").intlTelInput({               
+                allowDropdown: true,
+                autoHideDialCode: true,
+                autoPlaceholder: "polite",
+                customPlaceholder: null,
+                dropdownContainer: null,
+                excludeCountries: [],
+                formatOnDisplay: true,
+                geoIpLookup: null,
+                hiddenInput: "",
+                initialCountry: "",
+                localizedCountries: null,
+                nationalMode: true,
+                onlyCountries: [],
+                placeholderNumberType: "MOBILE",
+                preferredCountries: [ "us", "gb", "in", 'ae' ],
+                separateDialCode: false,
+                utilsScript: "",
+              });
+
+              function futureDate(){
+                var tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate()+Math.floor(Math.random() * 100))
+                return tomorrow.toJSON().slice(0,10)
+              }
+              function autofill(){
+                $('#testbtn').append('<i class="fa-solid fa-spinner blink_me"></i>')
+                
+                let RANDOMIZE_INPUT_FIELDS = $.get('https://api.mockaroo.com/api/7fc66d10?count=1&key=25c55040', function(data) {
+                  console.log(data)
+                  data=data[0]
+                  let ftime= data.fromTime;
+                  if (data.fromTime.toString().length < 5) {
+                    ftime = '0' + ftime
+                  };
+                  $("#name").val(data.name);
+                  $("#email").val(data.email);
+                  $("#paddress").val(data.pickupPoint);
+                  $("#daddress").val(data.dropPoint);
+                  $("#phone").val(data.phone);
+                  $("#adult").val(Math.floor(Math.random() * 5)+1);
+                  $("#baggage").val(Math.floor(Math.random() * 5+1));
+                  $("#checkin-date").val(futureDate);
+                  $("#checkin-time").val(ftime);
+                  $("#carclass").val($("#carclass option").slice(1)[Math.floor(Math.random() * $("#carclass option").slice(0).length)].value);
+
+                  $('#testbtn i').remove() // REMOVE Responsive LOADER
+                });
+              }
+
+              function validateform(){
+                $('#bookingform input').each(function(index, el) {
+                  console.info(el,el.checkValidity())
+                  if (!el.checkValidity()) {
+                    return false
+                  }
+                });
+                return true
+              }
+
+              $('form button').on("click",function(e){e.preventDefault();});
+
+              function submitOrder (){
+
+                if (!validateform()){
+                  // alert('please fill the form properly')
+                  return
+                }
+
+                postdata={
+                  // fromDate: `${$("#checkin-date").val()}T${$("#checkin-time").val()}:00`,
+                  pickupPoint: $("#paddress").val(),
+                  dropPoint: $("#daddress").val(),
+                  bookingDate : `${$("#checkin-date").val()}`,
+                  bookingTime : `${$("#checkin-time").val()}:00`,
+                  noOfPassenger : $("#adult").val(),
+                  noOfLuggage : $("#baggage").val(),
+                  isRoundTrip : true,
+                  rBookingDate : "",
+                  rBookingTime : "",
+                  distance : 10,
+                  vehicleClass : $("#carclass").val(),
+                  price : 25,
+                  meetGreet : $("#addonMeetGreet").is(':checked'),
+                  noOfBabySeat : $("#addonBabySeat").val(),
+                  noOfBoosterSeat : $("#addonBoosterSeat").val(),
+                  noOfSpecialLuggage : $("#addonSpecialLuggage").val(),
+                  noOfPets : $("#addonPets").val(),
+                  noOfExtraStop : $("#addonExtraRoute").val(),
+
+                  isBookingForSomeone : true,
+                  passengerName : "",
+                  passengerCountryCode : "",
+                  passengerPhone : "",
+                  passengerEmail : "",
+
+                  email : $("#email").val(),
+                  name : $("#name").val(),
+                  countryCode : $('.iti ul [aria-selected=true]').data('dial-code'),
+                  phone : $("#phone").val(),
+                  flightNo : "",
+                  countryOfResidence : "",
+                  remarks : "",
+                }
+
+                $.ajax({
+                  type: "POST",
+                  contentType: "application/json",
+                  url: '/api/rental/',
+                  data: JSON.stringify(postdata),
+                  headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                  dataType: "json",
+                  success: (data,textstatus,xhr)=>{
+                    console.log(data);
+                    Swal.fire('Booked Successfully').then(() => window.location = window.location);
+                  },
+                  error: (data,textstatus,xhr)=>{
+                    console.log(data)
+                    Swal.fire("Request Has Failed", JSON.stringify(data.responseJSON.message), 'error')
+                  }
+
+                });
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section>
+      <div class="modal" id="itemeditor" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Booking</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- EDIT ITEM GENERATOR -->
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="modalconfirm" type="button" class="btn btn-success">confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $('[data-bs-dismiss="modal"]').click(function(event) {x=$(this).parents('.modal').hide() }); //hide modal tweak
+      </script>
+    </section>
+
+
+
+    <section>
+      <style>
+        #texample td{
+          max-width: 50px;
+        }
+        #texample i{
+          width: 1em;
+        }
+        .fas{
+          font-family: "Font Awesome 6 Free", "Open Sans";
+          font-weight:900;
+        }
+        /*select * {
+          font-family:   'sans-serif' !important;
+        }*/
+      </style>
+      <div id="bookingtable" class=" py-0 mx-3">
+          <div class="row ">
+            <div class="col-md-12 mt-2">
+              <div class="card">
+                <div class="card-header w-100 pb-0 px-3 row mx-0">
+                  <h3 class="col-auto px-0">
+                    All Reservations 
+                  </h3>
+                  <div class=" px-0 ">
+                    <button type="button" class="btn btn-success col  ms-auto   p-1 text-right my-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <span>  <i class="fa-solid fa-feather-pointed"></i></span> 
+                      Add Reservation
+                    </button>
+                    <button id="zoom" class="btn btn-info col  mx-auto p-1 d-inline my-0">
+                      <i class="fa-solid fa-magnifying-glass"></i> Zoom
+                    </button>
+                    <script type="text/javascript">
+                      $('#zoom').click(function(event) {
+
+                        $('table td').toggleClass('enlarge');
+                      });
+
+                    </script>
+                  </div>
+                </div>
+                  
+                <!--  -->
+                <div id="car-list" class=" card-body px-2">
+                  <table id="texample" class="display">
+                    <thead>
+                      <tr class="text-left">
+                        <th> - </th>
+                        <th><i class="fa-solid fa-clock"></i> Start On</th>
+                        <th>Car Required</th>
+
+                        <th>Addons</th>
+                        <th >Customer</th>
+                        <th><i class="fa-solid fa-location-dot"></i> Pickup</th>
+                        <th><i class="fa-solid fa-location-pin"></i> Drop</th>
+                        <th>Chauffeur</th>
+
+                        <th>Trip</th>
+                        <th>Payment</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+                <!--  -->
+
+                <script type="text/javascript">
+                  $(document).ready(function() { 
+                  AJAX('GET','/api/rental/',null,
+                    success=(data,textstatus,xhr)=>{
+                      console.log('/api/rental/',data)
+                      loadOrdersToDashboard(data)
+                      mytable.DataTable({
+                        pageLength: 50,
+                        "autoWidth": false,
+                        columnDefs: [{ orderable: false, targets: [1] }, { "width": "10%", "targets": [1,6,4]}],
+                        // order: [[10, 'asc'],[1, 'desc']],
+                      })
+                    },
+                    error= (data,textstatus,xhr)=>{
+                      console.log(data)
+                    })
+
+                        
+                  });
+                    
+                  loadOrdersToDashboard = (data) =>{
+                      parentID='#car-list'
+
+                      mytable=$('#texample')
+                      tablebody=mytable.find('tbody')
+                      data.forEach( function(el) {
+                        element=`
+                        <tr data-json='${JSON.stringify(el)}'>
+                          <td data-id="${el._id}">
+                            <i onclick=InfoPopup(this) class="text-info fa-solid fa-circle-info"></i>
+                          </td>
+                          <td>${el.bookingDate.slice(0,10)} <br> ${el.bookingTime}</td>
+                          <td >${el.vehicleClass}</td>
+
+                          <td class="text-center">
+                            <i title="meetGreet" class=" col ${el.meetGreet ? 'text-success' : 'text-secondary'} fa-solid fa-hand-peace"></i>
+                            ${el.meetGreet ? 1 : 0}
+                            <i title="noOfPets" class=" col ${el.noOfPets ? 'text-success' : 'text-secondary'} fa-solid fa-dog"></i>
+                            ${el.noOfPets || 0}
+                            <i title="noOfExtraStop" class=" col ${el.noOfExtraStop ? 'text-success' : 'text-secondary'} fa-solid fa-arrows-split-up-and-left"></i>
+                            ${el.noOfExtraStop || 0}<br>
+                            <i title="noOfBabySeat" class=" col ${el.noOfBabySeat ? 'text-success' : 'text-secondary'} fa-solid fa-baby"></i>
+                            ${el.noOfBabySeat || 0}
+                            <i title="noOfBoosterSeat" class=" col ${el.noOfBoosterSeat ? 'text-success' : 'text-secondary'} fa-solid fa-child"></i>
+                            ${el.noOfBoosterSeat || 0}
+                            <i title="noOfSpecialLuggage" class=" col ${el.noOfSpecialLuggage ? 'text-success' : 'text-secondary'} fa-solid fa-cart-flatbed"></i>
+                            ${el.noOfSpecialLuggage || 0}
+                          </td>
+                          
+                          <td class="">
+                            <span onclick="Swal.fire('Phone','${el.phone}')"><i class="fa-solid fa-mobile-screen"></i></span>
+                            <span onclick="Swal.fire('Email','${el.email}')"><i class="fa-solid fa-envelope"></i></span>
+                            ${el.name}
+                          </td>
+
+                          <td>${el.pickupPoint}</td>
+                          <td title="${el.dropPoint}">
+                            ${el.dropPoint.length < 30 ? el.dropPoint : el.dropPoint.slice(0,60) }
+                          </td>
+                          <td class="cursor-help" title="${el.assignTo?.email}">${el.assignTo?.name || 'N/A'}</td>
+
+                          <td  class=""  data-sort="${el.status=='assigned'? 1 : el.status=='pending' ? 0 : 2}">
+                            <button onclick="toggleStatus(this)" data-status="${el.status }" class="badge ${el.status == 'assigned' ? "bg-warning" : el.status == 'pending' ? "bg-danger" : "bg-success" }">
+                              ${el.status }
+                            </button>
+                          </td>
+                          
+                          <td class="" > 
+                            ${el.price}
+                            <span onclick="togglePaid(this)" class="badge ${el.isPaid ? "bg-success" : "bg-danger"}">${el.isPaid } </span> 
+                            <span class="badge bg-secondary"> ${el.paymentMethod}</span> 
+                          </td>
+
+                          
+                        </tr>
+                        `
+                        tablebody.append(element)
+                        $(parentID).append(mytable)
+                      });
+                  }
+                  InfoPopup = (el)=>{
+                    el=$(el)
+                    jdata = el.closest('[data-json]').data('json')
+                    htmlmarkup=`
+                    <table class="table  text-dark" style="text-align:left">
+                      <thead>
+                        <tr>
+                          <th>Attribute</th>
+                          <th>Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                      </tbody>
+                    </table>
+                    `
+                    popupbody=$(htmlmarkup)
+                    // console.log(popupbody.children())
+                    for (const [key, value] of Object.entries(jdata)) {
+                      popupbody.find('tbody').append(`
+                        <tr >
+                          <td>${key}</td>
+                          <td>${value}</td>
+                        </tr>
+                        `)
+
+                    }
+                    Swal.fire({
+                      title: 'All Info',
+                      icon: 'info',
+                      html: popupbody,
+                      showCloseButton: true,
+                      focusConfirm: false,
+                      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+                      confirmButtonAriaLabel: 'Thumbs up, great!',
+                      cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+                      cancelButtonAriaLabel: 'Thumbs down'
+                    })
+                  }
+                  
+                  updateBooking = (el) => {
+                    dataJSON = $(el).parent().parent().data('json')
+                    editor = $('#itemeditor')
+                    ebody = editor.find('.modal-body').eq(0)
+                    console.log(dataJSON);
+                  }
+
+                  assignChauffeur = (bookingID) =>{
+                    editor = $('#itemeditor')
+                    editorBody = editor.find('.modal-body')
+                    editorBody.html('select chauffeur from list to assign this booking, after that it will be shown in their dashboard, the chauffeur will complete the ride on the respective date and mark it as done.')
+
+                    editor.toggle()
+                    var selector=$('<select name="chauffeur"/>')
+                    editor.find('.modal-body').append(selector)
+                    editor.find('.modal-title').text('Assign Chauffeur')
+
+
+                    window.chauffeurs.forEach((x)=>{ // chauffeur listing from database
+                      if (x.isVerified){
+                        selector.append(`
+                          <option value="${x._id}"  >
+
+                            ${x.name} @ ${x.activeCity}-${x.activeCountry} <br>
+                            | ${x.brand}-${x.model}(${x.year})-${x.type}
+                          </option>
+                        `)
+                      }
+                    })
+                    editorBody.append('<span class="text-success"> Verified Chauffeurs Only</span>')
+                    confirmAction = $("#modalconfirm").click(function (e) {
+                      AJAX("PUT",`/api/rental/assign/${bookingID}`, data={driverId:`${selector.val()}`})
+                      .then(()=>{
+                        Swal.fire({
+                          icon: 'success',
+                          title: 'Assigned Successfully',
+                          text: 'Ask the Chauffeur to check their my bookings tab',
+                        })
+                        .then(()=>{
+                          AJAX('PUT', `/api/rental/${bookingID}`,{status:'assigned'},refresh
+                          )
+                        })
+                      })
+                    });
+                  }
+                  
+                  toggleStatus =  (el) =>{
+                    bookingID=$(el).parent().siblings().eq(0).data('id')
+                    cstatus=$(el).data('status')
+                    data={status: cstatus == 'pending' ? 'assigned' : cstatus == 'assigned' ? 'done' : 'pending'  }
+                    whosDriving=
+                    template=`
+                    <button onclick="toggleStatus(this)" data-status="${data.status}" class="badge ${data.status == 'assigned' ? "bg-warning" : data.status == 'pending' ? "bg-danger" : "bg-success"}">
+                      ${data.status}
+                    </button>
+                    `
+
+                    if (cstatus == 'done'){
+                      Swal.fire({
+                        title: 'Do you want to Toggle?',
+                        text: 'If you think The order was marked as done by accident, You may revert it to pending state and re-assign a chauffeur',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes',
+                        denyButtonText: `No`,
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                          AJAX('PUT',`/api/rental/${bookingID}`,{status:'pending'}, success= () =>{$(el).replaceWith(template)})
+                        } else if (result.isDenied) {
+                          Swal.fire('Changes are not saved', '', 'info')
+                        }
+                      })
+                      return
+                    }
+                    if (cstatus == 'pending'){
+                      assignChauffeur(bookingID)
+                      return
+                    }
+                    if (cstatus == 'assigned'){
+                      AJAX('PUT',`/api/rental/${bookingID}`,{status:'done'}, success= () =>{$(el).replaceWith(template)})
+
+                    }
+                  }
+                  togglePaid = (el)=>{
+
+                  }
+
+                  getChauffeurs= async ()=>{
+                    window.chauffeurs= await AJAX('GET', '/api/chauffeurs/',null,null,data=undefined)
+                    console.log(chauffeurs)
+                  }
+                  getChauffeurs()
+
+                </script>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <!--   Core JS Files   -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

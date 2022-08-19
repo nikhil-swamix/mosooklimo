@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title> Material Dashboard </title>
+
+
+  <!--  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  
+
+  <!--  -->
+
+</head>
+
+<body class="g-sidenav-show bg-gray-200">
+  <aside data-load="components/sidemenu.html" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start   bg-gradient-light" id="sidenav-main"></aside>
+  <div class="main-content position-relative max-height-vh-100 h-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid px-2 px-md-4">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-dark  opacity-6"></span>
+      </div>
+      <div class="card card-body  mt-n5 col-6 mx-auto shadow-xl ">
+        <div class="row gx-4">
+          <div class="col-4 my-auto text-center">
+            <div class="avatar avatar-xl position-relative">
+              <img src="./images/profile2.png" alt="profile_image" class="w-100 rounded-circle shadow-warning ">
+            </div>
+            <br>
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Edit Chauffeur
+            </button>
+          </div>
+
+          <div class="col-8 my-auto">
+            <div id="data-field" class="h-100">
+              <h5 id="username" class="mb-1 text-center">
+                Hi XXXXXX
+              </h5>
+              <table class="table table-bordered table-striped text-black">
+                <tbody>
+                </tbody>
+              </table>
+              
+
+            </div>
+          </div>
+          <div class="col-auto mx-auto my-auto">
+            <!-- <button class="btn btn-danger" Dialogue()">Update</button> -->
+            <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter" >
+              Update
+            </button> -->
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Fields</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">Name</span>
+                      <input id="xname" type="name" autocomplete="on" class="form-control " name="name">
+                    </div>
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">Email</span>
+                      <input id="xemail" type="email" autocomplete="on" class="form-control " name="email" >
+                    </div>
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">Phone</span>
+                      <input id="xphone" type="tel" autocomplete="on" class="form-control " name="phone" >
+                    </div>
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">Agency</span>
+                      <input id="xagency" type="text" autocomplete="on" class="form-control " name="agency" >
+                    </div>
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">Nationality</span>
+                      <select id="xcountry" name="country" class="form-control" id="country">
+                        <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
+                        <optgroup id="country-optgroup-Africa" label="Africa">
+                          <option value="DZ" label="Algeria">Algeria</option> <option value="AO" label="Angola">Angola</option> <option value="BJ" label="Benin">Benin</option> <option value="BW" label="Botswana">Botswana</option> <option value="BF" label="Burkina Faso">Burkina Faso</option> <option value="BI" label="Burundi">Burundi</option> <option value="CM" label="Cameroon">Cameroon</option> <option value="CV" label="Cape Verde">Cape Verde</option> <option value="CF" label="Central African Republic">Central African Republic</option> <option value="TD" label="Chad">Chad</option> <option value="KM" label="Comoros">Comoros</option> <option value="CG" label="Congo - Brazzaville">Congo - Brazzaville</option> <option value="CD" label="Congo - Kinshasa">Congo - Kinshasa</option> <option value="CI" label="Côte d’Ivoire">Côte d’Ivoire</option> <option value="DJ" label="Djibouti">Djibouti</option> <option value="EG" label="Egypt">Egypt</option> <option value="GQ" label="Equatorial Guinea">Equatorial Guinea</option> <option value="ER" label="Eritrea">Eritrea</option> <option value="ET" label="Ethiopia">Ethiopia</option> <option value="GA" label="Gabon">Gabon</option> <option value="GM" label="Gambia">Gambia</option> <option value="GH" label="Ghana">Ghana</option> <option value="GN" label="Guinea">Guinea</option> <option value="GW" label="Guinea-Bissau">Guinea-Bissau</option> <option value="KE" label="Kenya">Kenya</option> <option value="LS" label="Lesotho">Lesotho</option> <option value="LR" label="Liberia">Liberia</option> <option value="LY" label="Libya">Libya</option> <option value="MG" label="Madagascar">Madagascar</option> <option value="MW" label="Malawi">Malawi</option> <option value="ML" label="Mali">Mali</option> <option value="MR" label="Mauritania">Mauritania</option> <option value="MU" label="Mauritius">Mauritius</option> <option value="YT" label="Mayotte">Mayotte</option> <option value="MA" label="Morocco">Morocco</option> <option value="MZ" label="Mozambique">Mozambique</option> <option value="NA" label="Namibia">Namibia</option> <option value="NE" label="Niger">Niger</option> <option value="NG" label="Nigeria">Nigeria</option> <option value="RW" label="Rwanda">Rwanda</option> <option value="RE" label="Réunion">Réunion</option> <option value="SH" label="Saint Helena">Saint Helena</option> <option value="SN" label="Senegal">Senegal</option> <option value="SC" label="Seychelles">Seychelles</option> <option value="SL" label="Sierra Leone">Sierra Leone</option> <option value="SO" label="Somalia">Somalia</option> <option value="ZA" label="South Africa">South Africa</option> <option value="SD" label="Sudan">Sudan</option> <option value="SZ" label="Swaziland">Swaziland</option> <option value="ST" label="São Tomé and Príncipe">São Tomé and Príncipe</option> <option value="TZ" label="Tanzania">Tanzania</option> <option value="TG" label="Togo">Togo</option> <option value="TN" label="Tunisia">Tunisia</option> <option value="UG" label="Uganda">Uganda</option> <option value="EH" label="Western Sahara">Western Sahara</option> <option value="ZM" label="Zambia">Zambia</option> <option value="ZW" label="Zimbabwe">Zimbabwe</option> 
+                        </optgroup>
+                        <optgroup id="country-optgroup-Americas" label="Americas">
+                          <option value="AI" label="Anguilla">Anguilla</option> <option value="AG" label="Antigua and Barbuda">Antigua and Barbuda</option> <option value="AR" label="Argentina">Argentina</option> <option value="AW" label="Aruba">Aruba</option> <option value="BS" label="Bahamas">Bahamas</option> <option value="BB" label="Barbados">Barbados</option> <option value="BZ" label="Belize">Belize</option> <option value="BM" label="Bermuda">Bermuda</option> <option value="BO" label="Bolivia">Bolivia</option> <option value="BR" label="Brazil">Brazil</option> <option value="VG" label="British Virgin Islands">British Virgin Islands</option> <option value="CA" label="Canada">Canada</option> <option value="KY" label="Cayman Islands">Cayman Islands</option> <option value="CL" label="Chile">Chile</option> <option value="CO" label="Colombia">Colombia</option> <option value="CR" label="Costa Rica">Costa Rica</option> <option value="CU" label="Cuba">Cuba</option> <option value="DM" label="Dominica">Dominica</option> <option value="DO" label="Dominican Republic">Dominican Republic</option> <option value="EC" label="Ecuador">Ecuador</option> <option value="SV" label="El Salvador">El Salvador</option> <option value="FK" label="Falkland Islands">Falkland Islands</option> <option value="GF" label="French Guiana">French Guiana</option> <option value="GL" label="Greenland">Greenland</option> <option value="GD" label="Grenada">Grenada</option> <option value="GP" label="Guadeloupe">Guadeloupe</option> <option value="GT" label="Guatemala">Guatemala</option> <option value="GY" label="Guyana">Guyana</option> <option value="HT" label="Haiti">Haiti</option> <option value="HN" label="Honduras">Honduras</option> <option value="JM" label="Jamaica">Jamaica</option> <option value="MQ" label="Martinique">Martinique</option> <option value="MX" label="Mexico">Mexico</option> <option value="MS" label="Montserrat">Montserrat</option> <option value="AN" label="Netherlands Antilles">Netherlands Antilles</option> <option value="NI" label="Nicaragua">Nicaragua</option> <option value="PA" label="Panama">Panama</option> <option value="PY" label="Paraguay">Paraguay</option> <option value="PE" label="Peru">Peru</option> <option value="PR" label="Puerto Rico">Puerto Rico</option> <option value="BL" label="Saint Barthélemy">Saint Barthélemy</option> <option value="KN" label="Saint Kitts and Nevis">Saint Kitts and Nevis</option> <option value="LC" label="Saint Lucia">Saint Lucia</option> <option value="MF" label="Saint Martin">Saint Martin</option> <option value="PM" label="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option> <option value="VC" label="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option> <option value="SR" label="Suriname">Suriname</option> <option value="TT" label="Trinidad and Tobago">Trinidad and Tobago</option> <option value="TC" label="Turks and Caicos Islands">Turks and Caicos Islands</option> <option value="VI" label="U.S. Virgin Islands">U.S. Virgin Islands</option> <option value="US" label="United States">United States</option> <option value="UY" label="Uruguay">Uruguay</option> <option value="VE" label="Venezuela">Venezuela</option>
+                        </optgroup>
+                        <optgroup id="country-optgroup-Asia" label="Asia">
+                          <option value="AF" label="Afghanistan">Afghanistan</option> <option value="AM" label="Armenia">Armenia</option> <option value="AZ" label="Azerbaijan">Azerbaijan</option> <option value="BH" label="Bahrain">Bahrain</option> <option value="BD" label="Bangladesh">Bangladesh</option> <option value="BT" label="Bhutan">Bhutan</option> <option value="BN" label="Brunei">Brunei</option> <option value="KH" label="Cambodia">Cambodia</option> <option value="CN" label="China">China</option> <option value="GE" label="Georgia">Georgia</option> <option value="HK" label="Hong Kong SAR China">Hong Kong SAR China</option> <option value="IN" label="India">India</option> <option value="ID" label="Indonesia">Indonesia</option> <option value="IR" label="Iran">Iran</option> <option value="IQ" label="Iraq">Iraq</option> <option value="IL" label="Israel">Israel</option> <option value="JP" label="Japan">Japan</option> <option value="JO" label="Jordan">Jordan</option> <option value="KZ" label="Kazakhstan">Kazakhstan</option> <option value="KW" label="Kuwait">Kuwait</option> <option value="KG" label="Kyrgyzstan">Kyrgyzstan</option> <option value="LA" label="Laos">Laos</option> <option value="LB" label="Lebanon">Lebanon</option> <option value="MO" label="Macau SAR China">Macau SAR China</option> <option value="MY" label="Malaysia">Malaysia</option> <option value="MV" label="Maldives">Maldives</option> <option value="MN" label="Mongolia">Mongolia</option> <option value="MM" label="Myanmar [Burma]">Myanmar [Burma]</option> <option value="NP" label="Nepal">Nepal</option> <option value="NT" label="Neutral Zone">Neutral Zone</option> <option value="KP" label="North Korea">North Korea</option> <option value="OM" label="Oman">Oman</option> <option value="PK" label="Pakistan">Pakistan</option> <option value="PS" label="Palestinian Territories">Palestinian Territories</option> <option value="YD" label="People's Democratic Republic of Yemen">People's Democratic Republic of Yemen</option> <option value="PH" label="Philippines">Philippines</option> <option value="QA" label="Qatar">Qatar</option> <option value="SA" label="Saudi Arabia">Saudi Arabia</option> <option value="SG" label="Singapore">Singapore</option> <option value="KR" label="South Korea">South Korea</option> <option value="LK" label="Sri Lanka">Sri Lanka</option> <option value="SY" label="Syria">Syria</option> <option value="TW" label="Taiwan">Taiwan</option> <option value="TJ" label="Tajikistan">Tajikistan</option> <option value="TH" label="Thailand">Thailand</option> <option value="TL" label="Timor-Leste">Timor-Leste</option> <option value="TR" label="Turkey">Turkey</option> <option value="TM" label="Turkmenistan">Turkmenistan</option> <option value="AE" label="United Arab Emirates">United Arab Emirates</option> <option value="UZ" label="Uzbekistan">Uzbekistan</option> <option value="VN" label="Vietnam">Vietnam</option> <option value="YE" label="Yemen">Yemen</option>
+                        </optgroup>
+                        <optgroup id="country-optgroup-Europe" label="Europe">
+                          <option value="AL" label="Albania">Albania</option> <option value="AD" label="Andorra">Andorra</option> <option value="AT" label="Austria">Austria</option> <option value="BY" label="Belarus">Belarus</option> <option value="BE" label="Belgium">Belgium</option> <option value="BA" label="Bosnia and Herzegovina">Bosnia and Herzegovina</option> <option value="BG" label="Bulgaria">Bulgaria</option> <option value="HR" label="Croatia">Croatia</option> <option value="CY" label="Cyprus">Cyprus</option> <option value="CZ" label="Czech Republic">Czech Republic</option> <option value="DK" label="Denmark">Denmark</option> <option value="DD" label="East Germany">East Germany</option> <option value="EE" label="Estonia">Estonia</option> <option value="FO" label="Faroe Islands">Faroe Islands</option> <option value="FI" label="Finland">Finland</option> <option value="FR" label="France">France</option> <option value="DE" label="Germany">Germany</option> <option value="GI" label="Gibraltar">Gibraltar</option> <option value="GR" label="Greece">Greece</option> <option value="GG" label="Guernsey">Guernsey</option> <option value="HU" label="Hungary">Hungary</option> <option value="IS" label="Iceland">Iceland</option> <option value="IE" label="Ireland">Ireland</option> <option value="IM" label="Isle of Man">Isle of Man</option> <option value="IT" label="Italy">Italy</option> <option value="JE" label="Jersey">Jersey</option> <option value="LV" label="Latvia">Latvia</option> <option value="LI" label="Liechtenstein">Liechtenstein</option> <option value="LT" label="Lithuania">Lithuania</option> <option value="LU" label="Luxembourg">Luxembourg</option> <option value="MK" label="Macedonia">Macedonia</option> <option value="MT" label="Malta">Malta</option> <option value="FX" label="Metropolitan France">Metropolitan France</option> <option value="MD" label="Moldova">Moldova</option> <option value="MC" label="Monaco">Monaco</option> <option value="ME" label="Montenegro">Montenegro</option> <option value="NL" label="Netherlands">Netherlands</option> <option value="NO" label="Norway">Norway</option> <option value="PL" label="Poland">Poland</option> <option value="PT" label="Portugal">Portugal</option> <option value="RO" label="Romania">Romania</option> <option value="RU" label="Russia">Russia</option> <option value="SM" label="San Marino">San Marino</option> <option value="RS" label="Serbia">Serbia</option> <option value="CS" label="Serbia and Montenegro">Serbia and Montenegro</option> <option value="SK" label="Slovakia">Slovakia</option> <option value="SI" label="Slovenia">Slovenia</option> <option value="ES" label="Spain">Spain</option> <option value="SJ" label="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option> <option value="SE" label="Sweden">Sweden</option> <option value="CH" label="Switzerland">Switzerland</option> <option value="UA" label="Ukraine">Ukraine</option> <option value="SU" label="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option> <option value="GB" label="United Kingdom">United Kingdom</option> <option value="VA" label="Vatican City">Vatican City</option> <option value="AX" label="Åland Islands">Åland Islands</option>
+                        </optgroup>
+                        <optgroup id="country-optgroup-Oceania" label="Oceania">
+                          <option value="AS" label="American Samoa">American Samoa</option> <option value="AQ" label="Antarctica">Antarctica</option> <option value="AU" label="Australia">Australia</option> <option value="BV" label="Bouvet Island">Bouvet Island</option> <option value="IO" label="British Indian Ocean Territory">British Indian Ocean Territory</option> <option value="CX" label="Christmas Island">Christmas Island</option> <option value="CC" label="Cocos [Keeling] Islands">Cocos [Keeling] Islands</option> <option value="CK" label="Cook Islands">Cook Islands</option> <option value="FJ" label="Fiji">Fiji</option> <option value="PF" label="French Polynesia">French Polynesia</option> <option value="TF" label="French Southern Territories">French Southern Territories</option> <option value="GU" label="Guam">Guam</option> <option value="HM" label="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option> <option value="KI" label="Kiribati">Kiribati</option> <option value="MH" label="Marshall Islands">Marshall Islands</option> <option value="FM" label="Micronesia">Micronesia</option> <option value="NR" label="Nauru">Nauru</option> <option value="NC" label="New Caledonia">New Caledonia</option> <option value="NZ" label="New Zealand">New Zealand</option> <option value="NU" label="Niue">Niue</option> <option value="NF" label="Norfolk Island">Norfolk Island</option> <option value="MP" label="Northern Mariana Islands">Northern Mariana Islands</option> <option value="PW" label="Palau">Palau</option> <option value="PG" label="Papua New Guinea">Papua New Guinea</option> <option value="PN" label="Pitcairn Islands">Pitcairn Islands</option> <option value="WS" label="Samoa">Samoa</option> <option value="SB" label="Solomon Islands">Solomon Islands</option> <option value="GS" label="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option> <option value="TK" label="Tokelau">Tokelau</option> <option value="TO" label="Tonga">Tonga</option> <option value="TV" label="Tuvalu">Tuvalu</option> <option value="UM" label="U.S. Minor Outlying Islands">U.S. Minor Outlying Islands</option> <option value="VU" label="Vanuatu">Vanuatu</option> <option value="WF" label="Wallis and Futuna">Wallis and Futuna</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">State</span>
+                      <input id="xstate" type="text" autocomplete="on" class="form-control " name="password" >
+                    </div>
+                    <div class=" mb-3">
+                      <span class="" id="basic-addon1">Password</span>
+                      <input id="xpassword" type="tel" autocomplete="on" class="form-control " name="password" >
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateUser(window.userid.toString())" >Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+              prefill = (data) => {
+                $('#xname').val(data.name)
+                $('#xemail').val(data.email)
+                $('#xphone').val(data.phone)
+                $('#xagency').val(data.agencyName)
+                $('#xcountry').val(data.country)
+                $('#xstate').val(data.state)
+              }
+              $(document).ready(function() {
+                loadUserData = (data) => {
+                  window.userid=data._id
+                  $('#username').text('Hello, '+data.name)
+                  dataField=$('#data-field table')
+                  dataMap={
+                    "ID":data._id,
+                    "Email":data.email,
+                    "Phone":data.phone,
+                    "Service Area":`${data.country} - ${data.state}`,
+                    "Agency":`${data.agencyName}`,
+                    "Verification":`${data.isVerified ? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>'}`,
+                    "Registration":`${data.registrationNo}`,
+                  }
+                  for ( d in dataMap){
+                    dataField.append(`<tr><td><span class="">${d}</span></td> <td>${dataMap[d]}</td></tr>`)
+                    console.log(d)
+                  }
+                  prefill(data)
+                  console.log(data);
+                }
+                AJAX("GET",'/api/chauffeurs/profile',data={},loadUserData);
+
+              });
+            </script>
+            <script type="text/javascript">
+              updateUser = (id) => {
+                postdata={
+                  name:$('#xname').val(),
+                  email:$('#xemail').val(),
+                  phone:$('#xphone').val(),
+                  agencyName:$('#xagency').val(),
+                  country:$('#xcountry').val(),
+                  state:$('#xstate').val(),
+                  password:$('#xpassword').val(),
+                }
+                $('#xpassword').val() ? null : delete postdata.password;
+
+                $.ajax({
+                  type: "PUT",
+                  contentType: "application/json",
+                  url: '/api/chauffeurs/profile',
+                  data: JSON.stringify(postdata),
+                  headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                  dataType: "json",
+                  success: (data,textstatus,xhr)=>{
+                    Swal.fire(
+                      "User Updated",
+                      JSON.stringify(data),
+                      'success'
+                      ).then(()=>{window.location = window.location})
+                    // window.location= ""
+                  },
+                  error: (data,textstatus,xhr)=>{
+                    Swal.fire(
+                      "User Not Updated",
+                      JSON.stringify(data),
+                      'error'
+                      )
+                  }
+                });
+              }
+            </script>
+          </div>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUPER PILL NAVIGATOR -->
+          <!-- <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+              <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                    <i class="material-icons text-lg position-relative">home</i>
+                    <span class="ms-1">App</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                    <i class="material-icons text-lg position-relative">email</i>
+                    <span class="ms-1">Messages</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                    <i class="material-icons text-lg position-relative">settings</i>
+                    <span class="ms-1">Settings</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+          
+        </div>
+        
+      </div>
+    </div>
+    <footer class="footer py-4"></footer>
+  </div>
+  
+
+  <!-- DATATABLES -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <!-- CSS -->
+
+  <!--   BOOTSTRAP   -->
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" integrity="sha512-sH8JPhKJUeA9PWk3eOcOl8U+lfZTgtBXD41q6cO/slwxGHCxKcW45K4oPCUhHG7NMB4mbKEddVmPuTXtpbCbFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script  src="./assets/js/swamix-driver.js"  ></script>
+  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" >
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+[
+  {
+    "brand": "BMW",
+    "model": "8 Series",
+    "type": "coupe",
+    "color": "White",
+    "year": 2018,
+    "carImage": "https://c4.wallpaperflare.com/wallpaper/136/398/567/bmw-bmw-8-series-bmw-840i-car-luxury-car-hd-wallpaper-preview.jpg",
+    "priceperday": 270,
+    "priceperkm":5
+  },
+  {
+    "brand": "BMW",
+    "model": "8 Series",
+    "type": "coupe",
+    "color": "Black",
+    "year": 2018,
+    "carImage": "https://wallpapercave.com/wp/wp10089751.jpg",
+    "priceperday": 270,
+    "priceperkm":5
+  },
+  {
+    "brand": "BMW",
+    "model": "7 Series",
+    "type": "luxury sedan",
+    "color": "White",
+    "year": 2016,
+    "carImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/2019_BMW_740Li_Automatic_facelift_3.0.jpg/200px-2019_BMW_740Li_Automatic_facelift_3.0.jpg",
+    "priceperday": 250,
+    "priceperkm":5
+  },
+  {
+    "brand": "BMW",
+    "model": "5 Series",
+    "type": "Executive",
+    "color": "White",
+    "year": 2018,
+    "carImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/BMW_G30_FL_IMG_5351.jpg/280px-BMW_G30_FL_IMG_5351.jpg",
+    "priceperday": 190,
+    "priceperkm":5
+  },
+  {
+    "brand": "AUDI",
+    "model": "A6",
+    "type": "Executive",
+    "color": "Black",
+    "year": 2018,
+    "carImage": "https://images.carandbike.com/car-images/colors/audi/a6/audi-a6-myth-black-metallic.png?v=1572503278",
+    "priceperday": 185,
+    "priceperkm":5
+  },
+  {
+    "brand": "Mercedes",
+    "model": "C-Class",
+    "type": "sedan",
+    "color": "White",
+    "year": 2021,
+    "carImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Mercedes-Benz_W206_IMG_5796.jpg/280px-Mercedes-Benz_W206_IMG_5796.jpg",
+    "priceperday": 140,
+    "priceperkm":5
+  },
+  {
+    "brand": "Mercedes",
+    "model": "E-Class",
+    "type": "Executive",
+    "color": "White",
+    "year": 2016,
+    "carImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2016_Mercedes-Benz_E220d_AMG_Line_Premium%2B_2.0_Front.jpg/280px-2016_Mercedes-Benz_E220d_AMG_Line_Premium%2B_2.0_Front.jpg",
+    "priceperday": 180,
+    "priceperkm":5
+  },
+  {
+    "brand": "Bentley",
+    "model": "Flying Spur W12",
+    "type": "Ultra luxury",
+    "color": "Black",
+    "year": 2019,
+    "carImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2019_Bentley_Flying_Spur_W12_Front.jpg/1920px-2019_Bentley_Flying_Spur_W12_Front.jpg",
+    "priceperday": 660,
+    "priceperkm":5
+  },
+  {
+    "brand": "Aston Martin",
+    "model": "DBX",
+    "type": "Ultra luxury",
+    "color": "Red",
+    "year": 2020,
+    "carImage": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/1-aston-martin-dbx-2020-uk-fd-hero-front.jpg?itok=Ol8hNVBc",
+    "priceperday": 560,
+    "priceperkm":5
+  }
+]

@@ -1,0 +1,350 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title>
+    mosook signup
+  </title>
+  <!--     Fonts and icons     -->
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body class="">
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
+          <div class="container-fluid ps-2 pe-0">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../index.html">
+              MosookLimo Registration Page
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link me-2" href="../pages/sign-up.html">
+                    <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                    Chauffeur Login
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-2" href="./sign-in.html">
+                    <i class="fas fa-key opacity-6 text-dark me-1"></i>
+                    Sign In
+                  </a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+      </div>
+    </div>
+  </div>
+  <main class="main-content  mt-0">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('./assets/img/illustrations/illustration-signup.jpg'); background-size: cover;">
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+              <div class="card card-plain">
+                <div class="card-header">
+                  <h4 class="font-weight-bolder">Sign Up</h4>
+                  <p class="mb-0">Enter your email and password to register</p>
+                </div>
+                <div class="card-body">
+                  <form id="userform" role="form" action="/api/users/" method="post">
+                    <div class="input-group input-group-outline mb-3">
+                      <input name="name" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <input name="email" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <!-- <label class="form-label">Password</label> -->
+                      <input name="password" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <!-- <input name="nationality" type="country" class="form-control" placeholder="nationality"> -->
+                      <select name="nationality" class="form-control" id="country">
+                        <option value="0" label="Select Nationality" selected="selected">Select a country ... </option>
+                        <optgroup id="country-optgroup-Africa" label="Africa">
+                          <option value="DZ" label="Algeria">Algeria</option>
+                          <option value="AO" label="Angola">Angola</option>
+                          <option value="BJ" label="Benin">Benin</option>
+                          <option value="BW" label="Botswana">Botswana</option>
+                          <option value="BF" label="Burkina Faso">Burkina Faso</option>
+                          <option value="BI" label="Burundi">Burundi</option>
+                          <option value="CM" label="Cameroon">Cameroon</option>
+                          <option value="CV" label="Cape Verde">Cape Verde</option>
+                          <option value="CF" label="Central African Republic">Central African Republic</option>
+                          <option value="TD" label="Chad">Chad</option>
+                          <option value="KM" label="Comoros">Comoros</option>
+                          <option value="CG" label="Congo - Brazzaville">Congo - Brazzaville</option>
+                          <option value="CD" label="Congo - Kinshasa">Congo - Kinshasa</option>
+                          <option value="CI" label="Côte d’Ivoire">Côte d’Ivoire</option>
+                          <option value="DJ" label="Djibouti">Djibouti</option>
+                          <option value="EG" label="Egypt">Egypt</option>
+                          <option value="GQ" label="Equatorial Guinea">Equatorial Guinea</option>
+                          <option value="ER" label="Eritrea">Eritrea</option>
+                          <option value="ET" label="Ethiopia">Ethiopia</option>
+                          <option value="GA" label="Gabon">Gabon</option>
+                          <option value="GM" label="Gambia">Gambia</option>
+                          <option value="GH" label="Ghana">Ghana</option>
+                          <option value="GN" label="Guinea">Guinea</option>
+                          <option value="GW" label="Guinea-Bissau">Guinea-Bissau</option>
+                          <option value="KE" label="Kenya">Kenya</option>
+                          <option value="LS" label="Lesotho">Lesotho</option>
+                          <option value="LR" label="Liberia">Liberia</option>
+                          <option value="LY" label="Libya">Libya</option>
+                          <option value="MG" label="Madagascar">Madagascar</option>
+                          <option value="MW" label="Malawi">Malawi</option>
+                          <option value="ML" label="Mali">Mali</option>
+                          <option value="MR" label="Mauritania">Mauritania</option>
+                          <option value="MU" label="Mauritius">Mauritius</option>
+                          <option value="YT" label="Mayotte">Mayotte</option>
+                          <option value="MA" label="Morocco">Morocco</option>
+                          <option value="MZ" label="Mozambique">Mozambique</option>
+                          <option value="NA" label="Namibia">Namibia</option>
+                          <option value="NE" label="Niger">Niger</option>
+                          <option value="NG" label="Nigeria">Nigeria</option>
+                          <option value="RW" label="Rwanda">Rwanda</option>
+                          <option value="RE" label="Réunion">Réunion</option>
+                          <option value="SH" label="Saint Helena">Saint Helena</option>
+                          <option value="SN" label="Senegal">Senegal</option>
+                          <option value="SC" label="Seychelles">Seychelles</option>
+                          <option value="SL" label="Sierra Leone">Sierra Leone</option>
+                          <option value="SO" label="Somalia">Somalia</option>
+                          <option value="ZA" label="South Africa">South Africa</option>
+                          <option value="SD" label="Sudan">Sudan</option>
+                          <option value="SZ" label="Swaziland">Swaziland</option>
+                          <option value="ST" label="São Tomé and Príncipe">São Tomé and Príncipe</option>
+                          <option value="TZ" label="Tanzania">Tanzania</option>
+                          <option value="TG" label="Togo">Togo</option>
+                          <option value="TN" label="Tunisia">Tunisia</option>
+                          <option value="UG" label="Uganda">Uganda</option>
+                          <option value="EH" label="Western Sahara">Western Sahara</option>
+                          <option value="ZM" label="Zambia">Zambia</option>
+                          <option value="ZW" label="Zimbabwe">Zimbabwe</option>
+                        </optgroup>
+                        <optgroup id="country-optgroup-Americas" label="Americas">
+                          <option value="AI" label="Anguilla">Anguilla</option>
+                          <option value="AG" label="Antigua and Barbuda">Antigua and Barbuda</option>
+                          <option value="AR" label="Argentina">Argentina</option>
+                          <option value="AW" label="Aruba">Aruba</option>
+                          <option value="BS" label="Bahamas">Bahamas</option>
+                          <option value="BB" label="Barbados">Barbados</option>
+                          <option value="BZ" label="Belize">Belize</option>
+                          <option value="BM" label="Bermuda">Bermuda</option>
+                          <option value="BO" label="Bolivia">Bolivia</option>
+                          <option value="BR" label="Brazil">Brazil</option>
+                          <option value="VG" label="British Virgin Islands">British Virgin Islands</option>
+                          <option value="CA" label="Canada">Canada</option>
+                          <option value="KY" label="Cayman Islands">Cayman Islands</option>
+                          <option value="CL" label="Chile">Chile</option>
+                          <option value="CO" label="Colombia">Colombia</option>
+                          <option value="CR" label="Costa Rica">Costa Rica</option>
+                          <option value="CU" label="Cuba">Cuba</option>
+                          <option value="DM" label="Dominica">Dominica</option>
+                          <option value="DO" label="Dominican Republic">Dominican Republic</option>
+                          <option value="EC" label="Ecuador">Ecuador</option>
+                          <option value="SV" label="El Salvador">El Salvador</option>
+                          <option value="FK" label="Falkland Islands">Falkland Islands</option>
+                          <option value="GF" label="French Guiana">French Guiana</option>
+                          <option value="GL" label="Greenland">Greenland</option>
+                          <option value="GD" label="Grenada">Grenada</option>
+                          <option value="GP" label="Guadeloupe">Guadeloupe</option>
+                          <option value="GT" label="Guatemala">Guatemala</option>
+                          <option value="GY" label="Guyana">Guyana</option>
+                          <option value="HT" label="Haiti">Haiti</option>
+                          <option value="HN" label="Honduras">Honduras</option>
+                          <option value="JM" label="Jamaica">Jamaica</option>
+                          <option value="MQ" label="Martinique">Martinique</option>
+                          <option value="MX" label="Mexico">Mexico</option>
+                          <option value="MS" label="Montserrat">Montserrat</option>
+                          <option value="AN" label="Netherlands Antilles">Netherlands Antilles</option>
+                          <option value="NI" label="Nicaragua">Nicaragua</option>
+                          <option value="PA" label="Panama">Panama</option>
+                          <option value="PY" label="Paraguay">Paraguay</option>
+                          <option value="PE" label="Peru">Peru</option>
+                          <option value="PR" label="Puerto Rico">Puerto Rico</option>
+                          <option value="BL" label="Saint Barthélemy">Saint Barthélemy</option>
+                          <option value="KN" label="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                          <option value="LC" label="Saint Lucia">Saint Lucia</option>
+                          <option value="MF" label="Saint Martin">Saint Martin</option>
+                          <option value="PM" label="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                          <option value="VC" label="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                          <option value="SR" label="Suriname">Suriname</option>
+                          <option value="TT" label="Trinidad and Tobago">Trinidad and Tobago</option>
+                          <option value="TC" label="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                          <option value="VI" label="U.S. Virgin Islands">U.S. Virgin Islands</option>
+                          <option value="US" label="United States">United States</option>
+                          <option value="UY" label="Uruguay">Uruguay</option>
+                          <option value="VE" label="Venezuela">Venezuela</option>
+                        </optgroup>
+                        <optgroup id="country-optgroup-Asia" label="Asia">
+                          <option value="AF" label="Afghanistan">Afghanistan</option>
+                          <option value="AM" label="Armenia">Armenia</option>
+                          <option value="AZ" label="Azerbaijan">Azerbaijan</option>
+                          <option value="BH" label="Bahrain">Bahrain</option>
+                          <option value="BD" label="Bangladesh">Bangladesh</option>
+                          <option value="BT" label="Bhutan">Bhutan</option>
+                          <option value="BN" label="Brunei">Brunei</option>
+                          <option value="KH" label="Cambodia">Cambodia</option>
+                          <option value="CN" label="China">China</option>
+                          <option value="GE" label="Georgia">Georgia</option>
+                          <option value="HK" label="Hong Kong SAR China">Hong Kong SAR China</option>
+                          <option value="IN" label="India">India</option>
+                          <option value="ID" label="Indonesia">Indonesia</option>
+                          <option value="IR" label="Iran">Iran</option>
+                          <option value="IQ" label="Iraq">Iraq</option>
+                          <option value="IL" label="Israel">Israel</option>
+                          <option value="JP" label="Japan">Japan</option>
+                          <option value="JO" label="Jordan">Jordan</option>
+                          <option value="KZ" label="Kazakhstan">Kazakhstan</option>
+                          <option value="KW" label="Kuwait">Kuwait</option>
+                          <option value="KG" label="Kyrgyzstan">Kyrgyzstan</option>
+                          <option value="LA" label="Laos">Laos</option>
+                          <option value="LB" label="Lebanon">Lebanon</option>
+                          <option value="MO" label="Macau SAR China">Macau SAR China</option>
+                          <option value="MY" label="Malaysia">Malaysia</option>
+                          <option value="MV" label="Maldives">Maldives</option>
+                          <option value="MN" label="Mongolia">Mongolia</option>
+                          <option value="MM" label="Myanmar [Burma]">Myanmar [Burma]</option>
+                          <option value="NP" label="Nepal">Nepal</option>
+                          <option value="NT" label="Neutral Zone">Neutral Zone</option>
+                        </optgroup>
+                      </div>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <input name="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required class="form-control" placeholder="Phone">
+                    </div>
+
+                    <div class="form-check form-check-info text-start ps-0">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                      <label class="form-check-label" for="flexCheckDefault">
+                        I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                      </label>
+                    </div>
+                    <div class="text-center">
+                      <button id="submitform" type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">
+                        Sign Up
+                      </button>
+                    </div>
+                    <input type="submit" hidden />
+                  </form>
+                  <!--  -->
+                  <script type="text/javascript">
+                    $('#submitform').click(function(event) {
+                      /* Act on the event */
+                      formdata= $("#userform").serializeArray();
+                      var data = {};
+                      $(formdata ).each(function(index, obj){
+                          data[obj.name] = obj.value;
+                      });
+                      $.ajax({
+                          type: "POST",
+                          contentType: "application/json",
+                          url: '/api/users/',
+                          data: JSON.stringify(data),
+                          dataType: "json",
+                          success: (data,textstatus,xhr)=>{
+                            localStorage.setItem('jwt', data.token)
+                            Swal.fire(
+                              "Registration Successful",
+                              JSON.stringify(data),
+                              'success'
+                            ).then(
+                              function() { window.location = "./"; })
+                          },
+                          error: (data,textstatus,xhr)=>{
+                            // console.log(data.responseJSON)
+                            Swal.fire(
+                              data.responseJSON.message,
+                              'Try Logging In',
+                              'error'
+                            )
+                          }
+                      });
+
+                    });
+                  </script>
+                  <!--  -->
+                </div>
+                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                  <p class="mb-2 text-sm mx-auto">
+                    Already have an account?
+                    <a href="./sign-in.html" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!--   Core JS Files   -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.min.js?v=3.0.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

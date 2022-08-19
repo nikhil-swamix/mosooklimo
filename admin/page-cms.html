@@ -1,0 +1,202 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title>
+    Mosooklimo Dashboard
+  </title>
+
+  <!-- Font Awesome Icons -->
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <!--  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="./assets/js/swamix.js" type="text/javascript" charset="utf-8" ></script>
+  <link href="./assets/css/swamix.css" rel="stylesheet" /> 
+  <link id="pagestyle" href="./assets/css/material-dashboard.css" rel="stylesheet" />
+
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+
+  <aside data-load="components/sidemenu.html" class="sidenav navbar navbar-vertical navbar-expand-xs border-0  fixed-start   bg-gradient-light" id="sidenav-main"></aside>
+
+
+  <main class="main-content position-relative   border-radius-lg " style="overflow: visible;">
+    <!-- Navbar -->
+    
+    <nav class="navbar navbar-main navbar-expand-lg px-2  shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-2">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">CMS</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">Content Management System</h6>
+        </nav>
+      </div>
+    </nav>
+    
+
+
+    <div  class="container-fluid py-4" style="height:80vh; overflow: visible;">
+      <section id="navtabs">
+        <style>
+          .nav-item button{
+            color: #000;
+          }
+        </style>
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" >Home</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link " id="about-tab" data-bs-toggle="tab" data-bs-target="#aboutcms" type="button" role="tab" aria-selected="true" >About Us</button>
+          </li>
+          <script type="text/javascript">
+            rememberTab = $(document).ready(function() {
+              $('#myTabs button').click(function(event) {
+                id=$(this).attr('id');
+                console.log(id)
+                localStorage.setItem('settings.defaultTab','#'+id)
+              });
+              $(localStorage.getItem('settings.defaultTab')).tab('show')
+            });
+          </script>
+        </ul>
+
+        
+        <div class="tab-pane fade" id="aboutcms" role="tabpanel" aria-labelledby="profile-tab">
+          <p>This Section will modify the content in about page. </p>
+
+          <div class="input-chunk pt-5">
+            <h2>About Title</h2>
+            <input id="at" data-attribute="aboutTitle" type="text" name=""><br>
+            <button onclick="submitField('#at')" class="small green button mt-2">Submit</button>
+          </div>
+
+          <div class="input-chunk pt-5">
+            <h2>About Intro</h2>
+            <textarea id="at1" data-attribute="aboutSub1" type="text" name="" cols="50" rows="5"> </textarea> <br>
+            <button onclick="submitField('#at1')" class="small green button">Submit</button>
+          </div>
+
+          <div class="input-chunk pt-5">
+            <h2>Detailed Paragraph</h2>
+            <textarea id="at2" data-attribute="aboutSub2" type="text" name="" cols="50" rows="5"></textarea> <br>
+            <button onclick="submitField('#at2')" class="small green button">Submit</button>            
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="home" role="tabpanel" >
+          <!-- <form class="pt-5" action="/action_page.php">
+            <h2>Set Banner</h2>
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*">
+            <input type="submit">
+          </form> -->
+
+          <form class="pt-5" action="/action_page.php">
+            <h2 class="p-0 m-0">About Us Section</h2>
+            <textarea id="w3review" name="w3review" rows="8" cols="100">
+              Mosook Limo Family Enterprise Is A Leading (Mosook Group) We Offer Qualitative Services In Accordance With Saudi Standard And Now We Are Opening Our New Business Chauffeur Service For Vip’s Clients In The Kingdom Of Saudi Arabia. We Are Providing Services All Over The World. Specially Ksa , Bahrain, Jordan, Oman, Lebanon, Turkey, Uae, Uk, Usa, Germany,India And Pakistan.The Group Has Plans To Establish Car With Driver As A Regional Brand In Services For Primarily Corporate Customers And B2B Services For Corporate, Travel Companies, Airlines, And Hotels Etc
+            </textarea>
+            <br>
+            
+          </form>
+        </div>
+
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <form class="pt-5" action="/action_page.php">
+            <h2 class="p-0 m-0">Edit The Page Content</h2>
+            <textarea id="w3review" name="w3review" rows="8" cols="100">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </textarea>
+            <br>
+            
+          </form>
+        </div>
+        
+
+
+      </section>
+ 
+    </div>
+
+  </main>
+
+  <script type="text/javascript">
+    dataurl="/api/data"
+    loadDataToFields = (data) => {
+      data=data.pop()
+      window._id=data._id
+      $('#at').val(data.aboutTitle)
+      $('#at1').val(data.aboutSub1)
+      $('#at2').val(data.aboutSub2)
+      
+    }
+
+    submitField = (id) => {
+      postattr=$(id).data('attribute')
+      postval=$(id).val()
+      postdata={[postattr]:postval}
+      AJAX('PUT',`/api/data/${window._id}`,postdata, window.refresh ) 
+    }
+    AJAX('GET','/api/data',"",loadDataToFields )
+  </script>
+  
+  <!--   Core JS Files   -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <!-- <script src="./assets/js/core/bootstrap.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/chartjs.min.js"></script>
+  <script></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+</body>
+
+</html>

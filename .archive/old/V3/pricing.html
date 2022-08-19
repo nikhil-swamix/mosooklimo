@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style type="text/css">
+		.text-giant    { font-size: 40px; }
+	</style>
+</head>
+<body>
+	<section data-load="./components/menu.html">
+		
+	</section>
+	<section>
+		<div class="jumbotron container my-5">
+	        <h2>Mosooklimo Sedan Car's Per Kilometer Pricing</h2>
+	        <p>Slide the slider in blue button to see the pricing</p>
+		    <form>
+
+		        <div class="form-group" >
+		            <label for="price">Price/Km</label>
+		            <input type="text" class="form-control" name='price' value="5">
+		        </div>
+		        <div class="form-group">
+		                <label for="quantity">
+		                    Kilometers Travelled
+		                    <span class="label label-primary quantity-label">1</span>
+		                </label>
+		                <input type="range" class="form-control py-3" name='quantity' value='1' min='1' max="10" step="1">
+		            </div>
+
+		    </form>
+
+		    <div class="text-right text-giant total"></div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		// grab everything we need
+		 const priceInput = document.querySelector('[name=price]');
+		 const quantityInput = document.querySelector('[name=quantity]');
+		 const total = document.querySelector('.total');
+		 const quantityLabel = document.querySelector('.quantity-label');
+
+
+		// create the functions that we'll need
+		 function calculatePieCost() {
+		     const price = priceInput.value;
+		     const quantity = quantityInput.value;
+		     const cost = price * quantity;
+		     console.log(cost);
+		     total.innerText = '$' + cost.toFixed(2);
+		 }
+
+		 function updateQuantityLabel() {
+		     const quantity = quantityInput.value;
+		     quantityLabel.innerText = quantity;
+		 }
+
+		 // on first fun
+		 calculatePieCost();
+
+
+		// add our event listeners
+		 priceInput.addEventListener('input', calculatePieCost);
+		 quantityInput.addEventListener('input', calculatePieCost);
+		 quantityInput.addEventListener('input', updateQuantityLabel);
+	</script>
+	<section data-load="./components/footer.html"></section>
+
+	<script type="module" src="./assets/js/swamix.js"></script>
+
+</body>
+</html>

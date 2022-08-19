@@ -1,0 +1,371 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title> Material Dashboard </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+  <script  src="./assets/js/swamix.js" type="text/javascript" charset="utf-8" ></script>
+
+  <!--  -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <!--  -->
+
+  <link href="./assets/css/swamix.css" rel="stylesheet" /> 
+  <link id="pagestyle" href="./assets/css/material-dashboard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style type="text/css">
+  body {
+    /*background-image: url(https://wallpaperaccess.com/full/2544660.jpg);*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://www.wharftt.com/wp-content/uploads/2021/04/feat-1.jpg) ;
+    background-size: cover;
+
+  }
+  main{
+    height: 100vh;
+  }
+  #bookingtable{
+    opacity: 0.9;
+  }
+</style>
+
+<body class="g-sidenav-show  bg-gray-200">
+  <aside data-load="components/sidemenu.html" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start   bg-gradient-light" id="sidenav-main"></aside>
+  
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0  shadow-none border-radius-xl " id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white" ><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Airports</li>
+          </ol>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+           
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <section id="adminbookingform ">
+      <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/js/intlTelInput-jquery.min.js" integrity="sha512-+xuLsxQN3JBrnBSAr/vOlUqZfQ0OwpqZfdbuiQVpzjd5Y85F8F2AyzP4YNVDrpR29EolzELxc62br5gWK51phQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"></script> -->
+      <style>
+        .blink_me {
+          animation: blinker 0.1s linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+        .elem-group label{
+          color: #344767;
+        }
+      </style>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Add Airport</h3>
+              <button type="button" class="btn-close text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mb-0 pb-0">
+              <div class="flex-row-reverse d-flex">
+                <button id="testbtn"  class="btn btn-secondary text-white py-0 my-0" onclick="autofill()">Test</button>
+              </div>
+              <form id="inputform">
+                <div class="row">
+                  <div class=" col-6 mb-3">
+                    <label class="col-form-label">Airport IATA Code</label>
+                    <input id="x-1" type="text" class="form-control" placeholder="3 Letter Code Example ABC-HYD">
+                  </div>
+                  <div class=" col-6 mb-3">
+                    <label class="col-form-label">2 Letter Country Code</label>
+                    <input id="x-2" type="text" class="form-control" placeholder="Required">
+                  </div>
+                  <div class=" col-6 mb-3">
+                    <label class="col-form-label">State/Region</label>
+                    <input id="x-3" type="text" class="form-control" placeholder="Required">
+                  </div>
+                  <div class=" col-6 mb-3">
+                    <label class="col-form-label">Name</label>
+                    <input id="x-4" type="text" class="form-control" placeholder="Local Name">
+                  </div>
+                  <div class=" col-6 mb-3">
+                    <label class="col-form-label">Description</label>
+                    <input id="x-5" type="text" class="form-control" placeholder="Required">
+                  </div>                
+                <div class="modal-footer pb-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <a class="btn btn-success" onclick="submit()">Submit</a>
+                </div>
+              </form>
+            </div>
+
+            <script type="text/javascript">
+
+              function autofill(){
+                $('#testbtn').append('<i class="fa-solid fa-spinner blink_me"></i>')
+                let RANDOMIZE_INPUT_FIELDS = $.get('https://api.mockaroo.com/api/7fc66d10?count=1&key=25c55040', function(data) {
+                  console.log(data)
+                  data=data[0]
+                  let ftime= data.fromTime;
+                  if (data.fromTime.toString().length < 5) {
+                    ftime = '0' + ftime
+                  };
+                  $("#name").val(data.name);
+
+                  $('#testbtn i').remove() // REMOVE Responsive LOADER
+                });
+              }
+
+              function validateform(){
+                $('#inputform input').each(function(index, el) {
+                  console.info(el,el.checkValidity())
+                  if (!el.checkValidity()) {
+                    return false
+                  }
+                });
+                return true
+              }
+
+              $('form button').on("click",function(e){e.preventDefault();});
+
+
+              submit = () => {
+                postdata={
+                  name: `${$('#x-4').val()} - ${$('#x-1').val()} , ${$('#x-3').val()} , ${$('#x-2').val()}`,
+                  description: $('#x-5').val(),
+                  country: $('#x-2').val(),
+                }
+
+                $.ajax({
+                  type: "POST",
+                  contentType: "application/json",
+                  url: '/api/airports/',
+                  data: JSON.stringify(postdata),
+                  headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                  dataType: "json",
+                  success: (data,textstatus,xhr)=>{
+                    console.log(data);
+                    Swal.fire('Added Successfully')
+                    .then(()=>{window.location= window.location});
+                  },
+                  error: (data,textstatus,xhr)=>{
+                    // alert('user not loggedin')
+                    console.log(data)
+                    Swal.fire(
+                      "Request Has Failed",
+                      JSON.stringify(data.responseJSON.message),
+                      'error'
+                    )
+                  }
+
+                });
+              }
+
+
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <style>
+        
+      </style>
+      <div id="bookingtable" class=" py-0 mx-3">
+          <div class="row ">
+            <div class="col-md-12 mt-2">
+              <div class="card">
+                <div class="card-header w-100 pb-0 px-3 row mx-0">
+                  <h3 class="col-auto px-0">
+                    Airport Listing 
+                  </h3>
+                  <div class=" px-0 ">
+                    <button type="button" class="btn btn-success col  ms-auto   p-1 text-right my-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <span>  <i class="fa-solid fa-feather-pointed"></i></span> Add Airport &nbsp;
+                    </button>
+                    <button id="zoom" class="btn btn-info col  mx-auto p-1 d-inline my-0">
+                      <i class="fa-solid fa-magnifying-glass"></i> Zoom
+                    </button>
+                    <script>
+                      $('#zoom').click(function(event) { $('table td').toggleClass('enlarge'); });
+                    </script>
+                  </div>
+                </div>
+                  
+                <!--  -->
+                <div id="tablelisting" class=" card-body px-2">
+                    Please Wait, Listing Airports in Progress
+                </div>
+                <!--  -->
+                <script type="text/javascript">
+                  console.log("Initializing Get Bookings List")
+                  
+                    
+                  loadToDashboard = () =>{
+                    AJAX('GET','/api/airports/',null,
+                    (data,textstatus,xhr)=>{
+                      console.log(data)
+                      parentID='#tablelisting'
+                      $(parentID).empty()
+                      tabletemplate=`
+                        <table id="texample" class="display">
+                          <thead>
+                            <tr class="text-left">
+                              <th>Name</th>
+                              <th>Country</th>
+                              <th>Popular</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      `
+                      mytable=$(tabletemplate)
+                      tablebody=mytable.find('tbody')
+                      data.forEach( function(el) {
+                        element=`
+                        <tr data-json='${JSON.stringify(el)}'>
+                          <td>${el.name}</td>
+                          <td>${el.country}</td>
+
+                          <td>
+                            <button onclick="toggleState(this)" data-cstate="${el.isPopular}" class="badge ${el.isPopular == true ? "bg-success" : "bg-danger" }">
+                              ${el.isPopular}
+                            </button>
+                          </td>
+
+                          <td>
+                            <button class="btn btn-link text-danger text-gradient px-1 mb-0"  onclick="deleteEntry('${el._id}');">
+                              <i class="material-icons text-sm me-2">delete</i>
+                            </button>
+                          </td>
+                          td
+                        </tr>
+                        `
+                        tablebody.append(element)
+                      });
+                      $(parentID).append(mytable)
+                      mytable.DataTable({
+                        deferRender: true,
+                        pageLength:100,
+                      })
+                      
+                    },
+                    (data,textstatus,xhr)=>{
+                      Swal.fire("Failed to load Airports", 'check console for logs ID213412' , 'error')
+                      console.error('ID213412',JSON.stringify(data))
+                    }
+                  )}
+
+                  $(document).ready(function() {
+                    loadToDashboard()
+                    
+                  });
+                  
+                  // _______________________________
+                  deleteEntry = (id) => {
+                    bsSwal.fire({
+                      title: 'Do You want to Delete?',
+                      text: "You won't be able to revert this! its permanantly gone.",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      cancelButtonText: 'No, cancel!',
+                      confirmButtonText: 'Yes, delete it!',
+                      reverseButtons: true,
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        AJAX('DELETE',`/api/airports/${id}`,{},
+                          ()=>{Swal.fire('Deleted','The Airport has been deleted','success').then(refresh)})
+                      }else if ( result.dismiss === Swal.DismissReason.cancel ) {
+                        bsSwal.fire('Cancelled', 'You have cancelled the action', 'error')
+                      }
+                    })
+                  }
+
+                  // _______________________________
+                  toggleState = (el) =>{
+                    var $el=$(el)
+                    toggleAttribute='isPopular'
+                    oid = $el.parent().parent().data('json')._id
+                    // console.log(cstatus)
+                    postdata= {[toggleAttribute]: $el.data('cstate').toString() == 'true' ? 'false' : 'true'} 
+                    console.log(postdata)
+
+                    template=`
+                    <button onclick="toggleState(this)" data-cstate="${!postdata[toggleAttribute]}" class="badge ${postdata[toggleAttribute] == 'true' ? "bg-success" : "bg-danger"}">
+                      ${postdata[toggleAttribute]}
+                    </button>
+                    `
+                    AJAX('PUT',`/api/airports/${oid}`, postdata, 
+                      success= () =>{ $(el).replaceWith(template) }).then(()=>{Toast.fire({icon: 'success', title: 'Verification Status Toggled!'})
+                    })
+                  }
+
+
+                </script>
+                <!--  -->
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <!--   Core JS Files   -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

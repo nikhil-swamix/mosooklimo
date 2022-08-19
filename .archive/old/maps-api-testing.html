@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;
+      width: 600px;
+    }
+  </style>
+  
+</head>
+<body>
+  <!--The div elements for the map and message -->
+  <div>
+    <p>Start Loc</p>
+    <input id="start" type="" name="" value="Techbinge Delhi">
+    <p>End Loc</p>
+    <input id="end" type="" name="" value="JNU Delhi">
+    <br>
+    <br>
+    <button id="refresh" type="" onclick="refreshMap()">Re-Search</button>
+    <br>
+
+  </div>
+  <div id="map"></div>
+  <div id="msg"></div>
+  <script>
+    var map;
+    async function geoEncoder() {
+
+      window.startPoint = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${document.getElementById('start').value}&key=AIzaSyAdvuP-IdUSDLp0nLDFRv3vTTo6K_B92-k`).then( (response) => response.json() ).then(data => data.results[0].geometry.location)
+
+      window.endPoint =await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${document.getElementById('end').value}&key=AIzaSyAdvuP-IdUSDLp0nLDFRv3vTTo6K_B92-k`).then(response => response.json()).then(data => data.results[0].geometry.location);
+
+    }
+
+
+    function refreshMap() {
+      initMap()
+    }
+
+    async function initMap() {
+      await geoEncoder()
+      const center = {lat:( startPoint.lat + endPoint.lat)/2, lng: (startPoint.lng + endPoint.lng)/2 };
+      const options = {zoom: 11, scaleControl: true, center: center};
+
+      map = new google.maps.Map(document.getElementById('map'), options);
+
+      var mk1 = new google.maps.Marker({position: startPoint, map: map});
+      var mk2 = new google.maps.Marker({position: endPoint, map: map});
+      let directionsService = new google.maps.DirectionsService();
+      let directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
+      
+
+      const route = {
+        origin: startPoint,
+        destination: endPoint,
+        travelMode: 'DRIVING'
+      }
+
+      directionsService.route(route,
+        function(response, status) {
+          if (status !== 'OK') {
+            window.alert('Directions request failed due to ' + status);
+            return;
+          } else {
+            directionsRenderer.setDirections(response);
+            var directionsData = response.routes[0].legs[0];
+            if (!directionsData) {
+              window.alert('Directions request failed');
+              return;
+            }
+            else {
+              document.getElementById('msg').innerHTML += " Driving distance is " + directionsData.distance.text + " (" + directionsData.duration.text + ").";
+            }
+          }
+        });
+    }
+
+    </script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdvuP-IdUSDLp0nLDFRv3vTTo6K_B92-k&callback=initMap">
+    </script>
+    <!--Load the API from the specified URL -- remember to replace YOUR_API_KEY-->
+</body>
+</html>

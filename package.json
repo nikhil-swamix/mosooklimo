@@ -1,0 +1,34 @@
+{
+  "name": "mosooklimo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.135.0",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "express-fileupload": "^1.4.0",
+    "g": "^2.0.1",
+    "i": "^0.3.7",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.2.5",
+    "multer": "^1.4.4",
+    "multer-s3": "^3.0.1",
+    "nodemon": "^2.0.16",
+    "npm": "^8.15.0",
+    "socket.io": "^4.5.1"
+  }
+}

@@ -1,0 +1,55 @@
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+}
+
+.box {
+    padding-left: "120px";
+    padding-right: "50px";
+}
+
+.imgWrap {
+    height: auto;
+    width: 100%;
+    /* border: 1px solid black; */
+    object-fit: cover;
+}
+
+@media (max-width: 991px) {
+    .imgWrap {
+        background-image: none !important;
+    }
+}
+
+.text-black {
+    color: #000;
+}
+
+.ro {
+    padding: 22px 0;
+}
+
+
+/* 
+p {
+    text-shadow: 0 0 0.3em #ccc;
+} */
+
+.text-justify {
+    text-align: justify;
+}
+.archive__content {
+    -webkit-columns: 3;
+    column-count: 3;
+}
+.archive__content li{
+    padding: 0px 0;
+}
+.box_v{
+    margin-top: 100px, 50px!important;
+}
+@media only screen and (max-width: 600px) {
+    .archive__content {
+        -webkit-columns: 1;
+        column-count: 1;
+    }
+}

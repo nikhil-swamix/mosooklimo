@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+
+	<form action="/api/upload" method="post" enctype="multipart/form-data">
+		Select image to upload:
+		<input type="file" name="image" id="">
+		<input type="submit" value="Upload Image" name="submit">
+	</form>
+
+	<form method="post" action="" enctype="multipart/form-data" id="myform">
+		<div>
+			<input type="file" id="file" name="image" />
+			<input type="button" class="button" value="Upload" id="but_upload">
+		</div>
+	</form>
+	<script>
+		$(document).ready(function() {
+			$("#but_upload").click(function() {
+				var fd = new FormData();
+				var files = $('#file')[0].files[0];
+				fd.append('image', files);
+				
+				$.ajax({
+					url: '/api/upload',
+					type: 'post',
+					data: fd,
+					contentType: false,
+					processData: false,
+					success: function(response){
+						if(response != 0){
+							console.log(response)
+							alert('file uploaded');
+						}
+						else{
+							alert('file not uploaded');
+						}
+					},
+				});
+			});
+		});
+
+	</script>
+</body>
+</html>

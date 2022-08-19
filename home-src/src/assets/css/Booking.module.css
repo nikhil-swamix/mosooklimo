@@ -1,0 +1,187 @@
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator{
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    /*visibility: hidden;*/
+}
+
+input[type="time"],input[type="date"],input[type="number"]{
+    width: 100%;
+    /*text-align: center;*/
+
+}
+input{
+    padding: 0.5em  !important;
+    /*width: 100%;*/
+    border: none;
+}
+#noOfPassenger:before{
+    content:'Time:';
+    margin-right:.6em;
+    color:#9d9d9d;
+}
+.wrapper {
+    padding: 30px;
+    margin-left: 110px;
+    margin-right: 110px;
+    background-color: #d7b65d;
+    border-radius: 20px;
+    text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
+}
+
+.cardTitle {
+    color: black;
+    font-size: 2.1rem;
+    font-weight: "bold";
+}
+
+.cardSubtitle {
+    font-size: 1.2rem;
+    font-weight: "bold";
+}
+
+.row {
+    display: flex;
+    /* border: 1px solid green; */
+}
+
+.row2 {
+    display: flex;
+}
+
+.row3 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.box {
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    /* border: 1px solid red; */
+    /*border: 1px solid green;*/
+}
+
+.box>input {
+    flex: 1;
+    /*height: 40px;*/
+    border: none;
+    outline: none;
+    font-size: 18px;
+    width: "50%";
+    padding-left: 10px;
+}
+
+.boxIcon {
+    width: auto;
+    height: 3em;
+    margin: 0 0.1em;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    border: 1px solid #6666;
+}
+
+.innerBoxIcon {
+    flex: 1;
+    height: 38px;
+    border: none;
+    outline: 0px;
+    font-size: 16px;
+    margin-left: 1em;
+    scroll-behavior: smooth;
+}
+
+.buttonRedo {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    padding: 12px;
+    margin-inline: 5px;
+    background-color: white;
+}
+
+.button {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 62px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #4a4f54;
+}
+
+.row2margin {
+    margin-left: 10px;
+}
+
+
+@media (max-width: 710px) {
+    .row {
+        display: block;
+    }
+    .wrapper {
+        padding: 0.5em;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .row2 {
+        display: block;
+    }
+    .row3 {
+        display: block;
+    }
+    .box {
+        height: auto;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    .box>input {
+        height: 40px;
+        outline: none;
+        font-size: 12px;
+        padding-left: 10px;
+    }
+    .buttonRedo {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 4px;
+        filter: drop-shadow(1px 1px 1px);
+    }
+    .cardTitle {
+        font-size: 1.6rem;
+    }
+    .cardSubtitle {
+        font-size: 0.8rem;
+    }
+    .button {
+        padding: 15px 35px;
+        font-size: 14px;
+        margin: 4px 2px;
+        width: 100%;
+    }
+    .row2margin {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}

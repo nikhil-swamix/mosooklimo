@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title> Material Dashboard </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+  <script src="./assets/js/swamix-driver.js" type="text/javascript" charset="utf-8" ></script>
+
+  <!--  -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <!--  -->
+  <link href="./assets/css/swamix.css" rel="stylesheet" /> 
+  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style type="text/css">
+  body {
+    /*background-image: url(https://wallpaperaccess.com/full/2544660.jpg);*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://www.wharftt.com/wp-content/uploads/2021/04/feat-1.jpg) ;
+    background-size: cover;
+
+  }
+  main{
+    height: 100vh;
+  }
+  #bookingtable{
+    opacity: 0.9;
+  }
+</style>
+
+<body class="g-sidenav-show  bg-gray-200">
+  <aside data-load="components/sidemenu.html" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start   bg-gradient-light" id="sidenav-main"></aside>
+  
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0  shadow-none border-radius-xl " id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white" ><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Reservations</li>
+          </ol>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+           
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    
+    <section>
+      <style>
+        #texample td{
+          max-width: 50px;
+        }
+        #texample i{
+          width: 1em;
+        }
+      </style>
+      <div id="bookingtable" class=" py-0 mx-3">
+          <div class="row ">
+            <div class="col-md-12 mt-2">
+              <div class="card">
+                <div class="card-header w-100 pb-0 px-2 row mx-0">
+                  <h3 class="col-auto mx-auto px-0 text-center">
+                    My Reservations 
+                    <p>These Reservations have been assigned to you, please complete them on time</p>
+                  </h3>
+                  <div class=" px-0 ">
+                    
+                    <button id="zoom" class="btn btn-info  mx-auto p-1 d-inline my-0">
+                      <i class="fa-solid fa-magnifying-glass"></i> Zoom
+                      <script type="text/javascript">
+                        $('#zoom').click(function(event) {$('table td').toggleClass('enlarge'); });
+                      </script>
+                    </button>
+                  </div>
+                </div>
+                  
+                <!--  -->
+                <div id="tablelisting" class=" card-body px-2">
+                  <table id="texample" class="display">
+                    <thead>
+                      <tr class="text-left">
+                        <th> - </th>
+                        <th><i class="fa-solid fa-clock"></i> Start On</th>
+                        <th>Car Required</th>
+
+                        <th>Addons</th>
+                        <th >Customer</th>
+                        <th><i class="fa-solid fa-location-dot"></i> Pickup</th>
+                        <th><i class="fa-solid fa-location-pin"></i> Drop</th>
+
+                        <th>Trip</th>
+                        <th>Payment</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+                <!--  -->
+
+                <script type="text/javascript">
+
+                  $(document).ready(function() { 
+                    AJAX()
+                    $.ajax({
+                        type: "GET",
+                        // contentType: "application/json",
+                        url: '/api/rental/chauffeur/orders',
+                        // data: JSON.stringify(data),
+                        headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                        dataType: "json",
+                        success: (data,textstatus,xhr)=>{
+                          console.log(data)
+                          loadOrdersToDashboard(data)
+                          mytable.DataTable({
+                            // retrieve: true,
+                            // select: true,
+                            columnDefs: [{ orderable: false, targets: 1,  }],
+                            order: [[1, 'desc']],
+                          })
+                        },
+                        error: (data,textstatus,xhr)=>{
+                          console.log(data);
+                          Swal.fire("Failed to load bookings", JSON.stringify(data), 'error');
+
+                        }
+                    }); 
+                  });
+                    
+                  loadOrdersToDashboard = (data) =>{
+                      parentID='#texample'
+                      mytable=$(parentID)
+                      tablebody=mytable.find('tbody')
+                      data.forEach( function(el) {
+                        element=`
+                        <tr data-json='${JSON.stringify(el)}'>
+                          <td data-id="${el._id}">
+                            <i onclick=InfoPopup(this) class="text-info fa-solid fa-circle-info"></i>
+                          </td>
+                          <td>${el.bookingDate.slice(0,10)} <br> ${el.bookingTime}</td>
+                          <td >${el.vehicleClass}</td>
+
+                          <td class="text-center">
+                            <i title="meetGreet" class=" col ${el.meetGreet ? 'text-success' : 'text-secondary'} fa-solid fa-hand-peace"></i>
+                            ${el.meetGreet ? 1 : 0}
+                            <i title="noOfPets" class=" col ${el.noOfPets ? 'text-success' : 'text-secondary'} fa-solid fa-dog"></i>
+                            ${el.noOfPets || 0}
+                            <i title="noOfExtraStop" class=" col ${el.noOfExtraStop ? 'text-success' : 'text-secondary'} fa-solid fa-arrows-split-up-and-left"></i>
+                            ${el.noOfExtraStop || 0}<br>
+                            <i title="noOfBabySeat" class=" col ${el.noOfBabySeat ? 'text-success' : 'text-secondary'} fa-solid fa-baby"></i>
+                            ${el.noOfBabySeat || 0}
+                            <i title="noOfBoosterSeat" class=" col ${el.noOfBoosterSeat ? 'text-success' : 'text-secondary'} fa-solid fa-child"></i>
+                            ${el.noOfBoosterSeat || 0}
+                            <i title="noOfSpecialLuggage" class=" col ${el.noOfSpecialLuggage ? 'text-success' : 'text-secondary'} fa-solid fa-cart-flatbed"></i>
+                            ${el.noOfSpecialLuggage || 0}
+                          </td>
+                          
+                          <td class="">
+                            ${el.name}
+                            <span onclick="Swal.fire('Phone','${el.phone}')"><i class="fa-solid fa-mobile-screen"></i></span>
+                            <span onclick="Swal.fire('Email','${el.email}')"><i class="fa-solid fa-envelope"></i></span>
+                          </td>
+
+                          <td>${el.pickupPoint}</td>
+
+                          <td title="${el.dropPoint}">
+                            ${el.dropPoint.length < 30 ? el.dropPoint : el.dropPoint.slice(0,60) }
+                          </td>
+                          
+                          <td  class=""  data-sort="${el.status=='assigned'? 1 : el.status=='pending' ? 0 : 2}">
+                            <button onclick="toggleStatus(this)" data-status="${el.status }" class="badge ${el.status == 'assigned' ? "bg-warning" : el.status == 'pending' ? "bg-danger" : "bg-success" }">
+                              ${el.status }
+                            </button>
+                          </td>
+                          <td class="" >
+                            $${el.price}
+                            <span onclick="togglePaid(this)" class="badge ${el.isPaid ? "bg-success" : "bg-danger"}">${el.isPaid } </span> 
+                            <span class="badge bg-secondary"> ${el.paymentMethod}</span> 
+                          </td>
+                        </tr>
+                        `
+                        tablebody.append(element)
+                      });
+                      $(parentID).append(mytable)
+                    }
+                    InfoPopup = (el)=>{
+                      el=$(el)
+                      jdata = el.closest('[data-json]').data('json')
+                      htmlmarkup=`
+                      <table class="table  text-dark" style="text-align:left">
+                        <thead>
+                          <tr>
+                            <th>Attribute</th>
+                            <th>Value</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
+                      `
+                      popupbody=$(htmlmarkup)
+                      // console.log(popupbody.children())
+                      for (const [key, value] of Object.entries(jdata)) {
+                        popupbody.find('tbody').append(`
+                          <tr >
+                            <td>${key}</td>
+                            <td>${value}</td>
+                          </tr>
+                        `)
+                      }
+                      Swal.fire({
+                        title: 'All Info',
+                        icon: 'info',
+                        html: popupbody,
+                        showCloseButton: true,
+                        focusConfirm: false,
+                        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+                        confirmButtonAriaLabel: 'Thumbs up, great!',
+                        cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+                        cancelButtonAriaLabel: 'Thumbs down'
+                      })
+                    }
+                    toggleStatus =  (el) =>{
+                      bookingID=$(el).parent().siblings().eq(0).data('id')
+                      cstatus=$(el).data('status')
+                      data={status: cstatus == 'pending' ? 'assigned' : cstatus == 'assigned' ? 'done' : 'pending'  }
+                      whosDriving=
+                      template=`
+                      <button onclick="toggleStatus(this)" data-status="${data.status}" class="badge ${data.status == 'assigned' ? "bg-warning" : data.status == 'pending' ? "bg-danger" : "bg-success"}">
+                        ${data.status}
+                      </button>
+                      `
+
+                      if (cstatus == 'done'){
+                        Swal.fire({
+                          title: 'Do you want to Toggle?',
+                          text: 'If you think The order was marked as done by accident, You may revert it to pending state and re-assign a chauffeur',
+                          showDenyButton: true,
+                          // showCancelButton: true,
+                          confirmButtonText: 'Yes',
+                          denyButtonText: `No`,
+                        }).then((result) => {
+                          /* Read more about isConfirmed, isDenied below */
+                          if (result.isConfirmed) {
+                            AJAX('PUT',`/api/rental/${bookingID}`,{status:'pending'}, success= () =>{$(el).replaceWith(template)})
+                          } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                          }
+                        })
+                        return
+                      }
+                      if (cstatus == 'pending'){
+                        AJAX('PUT',`/api/rental/${bookingID}/`,{status:'assigned'}, success= () =>{$(el).replaceWith(template)})
+                        return
+                      }
+                      if (cstatus == 'assigned'){
+                        AJAX('PUT',`/api/rental/${bookingID}`,{status:'done'}, success= () =>{$(el).replaceWith(template)})
+                      }
+                    }
+                </script>
+                <!--  -->
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <!--   Core JS Files   -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

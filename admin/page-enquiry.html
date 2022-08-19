@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <title> Material Dashboard </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="./assets/js/swamix.js" ></script>
+  <link href="./assets/css/swamix.css" rel="stylesheet" /> 
+  <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.1" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+  <aside data-load="components/sidemenu.html" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 fixed-start   bg-gradient-light" id="sidenav-main"></aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Enquiry Listing</li>
+          </ol>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar"></div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+
+   <div class=" py-4 mx-3">
+    <div class="row">
+      <div class="col-md-12 mt-4">
+        <div class="card ">
+          <h6 class="card-header pb-0 px-3">All Enquiries</h6>
+          <div id="listing" class="px-3"  >
+
+            <script>
+              $(document).ready(function() {
+                $('#table_id').DataTable();
+                $('#table_id tbody tr td').each(function(index, el) {
+                  console.log($(el).text())
+                 if ($(el).text() =="pending"){
+                  $(el).find('span').addClass('btn btn-danger d-block mt-1 p-1')
+                 }
+                 if ($(el).text() =="resolved"){
+                  $(el).find('span').addClass('btn btn-success d-block mt-1 p-1')
+                 }
+                });
+                
+              });
+              $(document).ready(function() { 
+                $.ajax({
+                    type: "GET",
+                    // contentType: "application/json",
+                    url: '/api/enquiries/',
+                    // data: JSON.stringify(data),
+                    headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                    dataType: "json",
+                    success: (data,textstatus,xhr)=>{
+                      console.log(data)
+                      loadToDashboard(data)
+                      mytable.DataTable({
+                        pageLength: 50,
+                        retrieve: true,
+                      })
+                    },
+                    error: (data,textstatus,xhr)=>{
+                      Swal.fire("Failed to load Airports", 'check console for logs ID213412' , 'error')
+                      console.error('ID213412',JSON.stringify(data))
+                    }
+                }); 
+              });
+              loadToDashboard = (data) =>{
+                $("#listing").empty()
+                tabletemplate=`
+                <table id="texample" class="display">
+                  <thead>
+                    <tr class="text-left"> 
+                      <th>Info</th>
+                      <th>Chauffeur</th>
+                      <th>Category</th>
+                      <th>Message</th>
+                      <th>Status</th>
+                      <th class="text-center">Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+                `
+                mytable=$(tabletemplate)
+                tablebody=mytable.find('tbody')
+                data.forEach( function(el) {
+                  if (el.isAdmin){
+                    return;
+                  }
+                  element=`
+                  <tr data-json='${JSON.stringify(el)}'>
+                    <td data-id="${el._id}">
+                      <i onclick=InfoPopup(this) class="text-info fa-solid fa-circle-info"></i>
+                    </td>
+                    <td>${el.driverId}</td>
+                    <td>${el.category}</td>
+                    <td>${el.msg}</td>
+
+                    
+                    <td  class="text-center"  data-sort="${el.status=='assigned'? 1 : el.status=='pending' ? 0 : 2}">
+                      <button onclick="toggleStatus(this)" data-status="${el.status}" class="badge ${el.status == 'pending' ? "bg-danger" : "bg-success" }">
+                        ${el.status}
+                      </button>
+                      
+                    </td>
+
+                    <td>
+                      <button class="btn btn-link text-danger text-gradient px-3 mb-0"  onclick="deleteEntry('${el._id}');">
+                        <i class="material-icons text-sm me-2">delete</i>Delete
+                      </button>
+                    </td>
+                  </tr>
+                  `
+                  tablebody.append(element)
+                  $("#listing").append(mytable)
+                  $(document).ready(function() {
+                    mytable.DataTable()
+                    
+                  });
+                  
+                });
+              }
+              toggleStatus =  (el) =>{
+                bookingID=$(el).parent().siblings().eq(0).data('id')
+                cstatus=$(el).data('status')
+                data={status: cstatus == 'pending' ? 'resolved' : 'pending'  }
+                whosDriving=
+                template=`
+                <button onclick="toggleStatus(this)" data-status="${data.status}" class="badge ${data.status == 'pending' ? "bg-danger" : "bg-success"}">
+                  ${data.status}
+                </button>
+                `
+
+                if (cstatus == 'resolved'){
+                  AJAX('PUT',`/api/enquiries/${bookingID}`,{status:'pending'}, success= () =>{$(el).replaceWith(template)})
+                }
+
+                if (cstatus == 'pending'){
+                  AJAX('PUT',`/api/enquiries/${bookingID}`,{status:'resolved'}, success= () =>{$(el).replaceWith(template)})
+
+                }
+              }
+
+
+
+              deleteEntry= (id)=>{
+                bsSwal.fire({
+                  title: 'Do You want to Delete?',
+                  text: "You won't be able to revert this! its permanantly gone.",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  cancelButtonText: 'No, cancel!',
+                  confirmButtonText: 'Yes, delete it!',
+                  reverseButtons: true,
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    AJAX('DELETE',`/api/enquiries/${id}`,{},
+                      ()=>{Swal.fire('Deleted','The enquiry has been deleted','success').then(refresh)})
+                  } else if (result.dismiss === Swal.DismissReason.cancel ) {
+                    bsSwal.fire('Cancelled', 'You have cancelled the action', 'error')
+                  }
+                })
+              }
+
+              InfoPopup = (el)=>{
+                el=$(el)
+                jdata = el.closest('[data-json]').data('json')
+                htmlmarkup=`
+                <table class="table  text-dark" style="text-align:left">
+                  <thead>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+                `
+                popupbody=$(htmlmarkup)
+                // console.log(popupbody.children())
+                for (const [key, value] of Object.entries(jdata)) {
+                  popupbody.find('tbody').append(`
+                    <tr >
+                      <td>${key}</td>
+                      <td>${value}</td>
+                    </tr>
+                    `)
+
+                }
+                Swal.fire({
+                  title: 'All Info',
+                  icon: 'info',
+                  html: popupbody,
+                  showCloseButton: true,
+                  focusConfirm: false,
+                  confirmButtonText:
+                  '<i class="fa fa-thumbs-up"></i> Great!',
+                  confirmButtonAriaLabel: 'Thumbs up, great!',
+                  cancelButtonText:
+                  '<i class="fa fa-thumbs-down"></i>',
+                  cancelButtonAriaLabel: 'Thumbs down'
+                })
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+  <!--   Core JS Files   -->
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="./assets/js/material-dashboard.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

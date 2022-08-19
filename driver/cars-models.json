@@ -1,0 +1,15 @@
+{
+	"BMW":["7 Series","5 Series"],
+	"Mercedes":["S-Class","E-Class","C-Class"],
+	"Chevrolet":["Captiva 7 Seater","Tahoe XLT","Suberban XL","Impala","Spark"],
+	"Gmc":["Yukon"],
+	"Ford":["Taurus","Explorer","Expedition"],
+	"Toyota":["Camry","Corolla","Land Cruiser GXR","Fourtuner Jeep","HI ACE",""],
+	"Hyundai":["Sonata","Azera","Genesis","i10","Accent","Elantra","H1 Mini bus","Staria 10 seater","Kona Jeep","Creta Jeep","Tucson Jeep"],
+	"Land Rover":[ "Range Rover","Evoque"],
+	"Mazda":["Mazda 6"],
+	"Jeep":["Wrangler","Grand Cherokee"],
+	"Kia":["Cerato","Pegas","Carnival"],
+	"Changan":["V7","L7","CS-85"],
+	"Geely":["Coolray Jeep","Azkarra Jeep","Tugella Jeep"]
+}
