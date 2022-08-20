@@ -1,5 +1,7 @@
 @echo off
 
+# sudo pm2 start node -- app.js
+
 set /p msg="Deploy notes - Commit message: "
 call `BUILD.cmd
 git add -A
