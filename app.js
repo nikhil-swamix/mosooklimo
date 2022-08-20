@@ -65,6 +65,8 @@ app.use('/driver', express.static('./driver')) // frontend driver static folder
 app.use('/utilities', express.static('./utilities')) // utilities
 
 
+app.get('/101fd5534aad34d24acdd10fb99d2523.html', (req, res) => res.status(200));
+
 var frontend_dir='home/' 
 if (process.env.NODE_ENV=='dev') {
   console.log('THIS IS DEVELOPMENT SERVER')
