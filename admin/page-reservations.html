@@ -652,7 +652,6 @@
                     bookingID=$(el).parent().siblings().eq(0).data('id')
                     cstatus=$(el).data('status')
                     data={status: cstatus == 'pending' ? 'assigned' : cstatus == 'assigned' ? 'done' : 'pending'  }
-                    whosDriving=
                     template=`
                     <button onclick="toggleStatus(this)" data-status="${data.status}" class="badge ${data.status == 'assigned' ? "bg-warning" : data.status == 'pending' ? "bg-danger" : "bg-success"}">
                       ${data.status}
@@ -691,7 +690,7 @@
                   }
 
                   getChauffeurs= async ()=>{
-                    window.chauffeurs= await AJAX('GET', '/api/chauffeurs/',null,null,data=undefined)
+                    window.chauffeurs= await AJAX('GET', '/api/chauffeurs/',null,data=undefined)
                     console.log(chauffeurs)
                   }
                   getChauffeurs()

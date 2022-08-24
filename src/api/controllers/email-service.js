@@ -5,7 +5,6 @@ import fetch from 'node-fetch';
 
 function publishEmail(params) {
   const url = 'https://api.sendinblue.com/v3/smtp/email';
-  const adminmail={email: 'hiyabuza.nikhil@gmail.com', name: 'Mosook Admin'}
   const options = { 
     method: 'POST',
     headers: {
@@ -14,8 +13,8 @@ function publishEmail(params) {
       'api-key': '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'
     },
     body: JSON.stringify({
-      sender: {name: 'Mosooklimo Notify', email: 'nikhilswami1@gmail.com',},
-      to: [adminmail],
+      sender: {name: 'Mosooklimo', email: 'nikhilswami1@gmail.com',},
+      to: [{email: 'meenakshiydv1999@gmail.com', name: 'Mosook Admin'}],
       
       // bcc: [{email: 'helen9766@example.com', name: 'Helen'}],
       cc: [{email: 'pkj.j09@gmail.com', name: 'Pankaj Jain'}],
@@ -26,8 +25,9 @@ function publishEmail(params) {
       <!DOCTYPE html> 
       <html> 
       <body> 
+        Dear Admin,
         <h1>Need To Verify New Chauffuer</h1>
-        the Details of Chauffeur are 
+        <p>the Details of Chauffeur are </p>
         <table>
           <tr>
             <th>NAME</th>
@@ -40,13 +40,13 @@ function publishEmail(params) {
             <td>${params.PHONE}</td>
           </tr>
         </table>
-        <p>Please verify their application using this url</p>
+        <p>Review their application using this URL and navigate to Chauffeur Panel</p>
         https://mosooklimo.com/admin
       </body> 
       </html>`,
 
       textContent: 'to verify the registered partner visit the dashboard and navigate to Chauffuer section using this link ',
-      // replyTo: {email: 'admin@mosooklimo.com', name: 'Mosook Admin'},
+      replyTo: {email: 'admin@mosooklimo.com', name: 'Mosook Admin'},
       // attachment: [
       //   {
       //     url: 'https://attachment.domain.com/myAttachmentFromUrl.jpg',
