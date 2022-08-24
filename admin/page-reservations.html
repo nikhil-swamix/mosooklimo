@@ -624,9 +624,8 @@
                     window.chauffeurs.forEach((x)=>{ // chauffeur listing from database
                       if (x.isVerified){
                         selector.append(`
-                          <option value="${x._id}"  >
-
-                            ${x.name} @ ${x.activeCity}-${x.activeCountry} <br>
+                          <option value="${x._id}">
+                            ${x.name} @ ${x.activeCity}-${x.country} <br>
                             | ${x.brand}-${x.model}(${x.year})-${x.type}
                           </option>
                         `)

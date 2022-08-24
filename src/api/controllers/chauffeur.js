@@ -1,7 +1,9 @@
 import asyncHandler from "express-async-handler";
 import token from "../../util/token.js";
 import Chauffeur from "../models/chauffeur.js";
+import publishEmail from "./email-service.js";
 
+console.log(publishEmail)
 // @desc    Auth chauffeur & get token
 // @route   POST /api/chauffeurs/login
 // @access  Public
@@ -27,14 +29,19 @@ const authChauffeur = asyncHandler(async (req, res) => {
 // @access  Public
 const registerChauffeur = asyncHandler(async (req, res) => {
   const userExists = await Chauffeur.findOne(req.body );
-  console.log(userExists)
   if (userExists) {
     res.status(400);
     throw new Error("Chauffeur already exists");
   }
   
   const user = await Chauffeur.create(req.body );
+
   if (user) {
+    publishEmail({
+      FULLNAME: user.name,
+      EMAIL:user.email,
+      PHONE:user.phone,
+    })
     res.status(201).json(user);
   } else {
     res.status(400);
@@ -199,6 +206,8 @@ const getActiveCitiesOfChauffeurs = asyncHandler(async (req, res) => {
     throw new Error("not found");
   }
 });
+
+
 
 export {
   authChauffeur,

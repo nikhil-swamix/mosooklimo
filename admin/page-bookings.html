@@ -633,7 +633,12 @@
 
                     window.chauffeurs.forEach((x)=>{
                       if (x.isVerified){
-                        selector.append(`<option value="${x._id}">${x.name}</option>`)
+                        selector.append(`
+                          <option value="${x._id}">
+                            ${x.name} @ ${x.activeCity}-${x.country} <br>
+                            | ${x.brand}-${x.model}(${x.year})-${x.type}
+                          </option>
+                        `)
                       }
                     })
                     editorBody.append('<span class="text-success"> Verified Chauffeurs Only</span>')
@@ -647,8 +652,7 @@
                         })
                         .then(()=>{
                           AJAX(
-                            'PUT', 
-                            `/api/orders/${bookingID}`,{status:'assigned'}, 
+                            'PUT', `/api/orders/${bookingID}`,{status:'assigned'},
                             success = ()=>{
                               refresh()
                             }

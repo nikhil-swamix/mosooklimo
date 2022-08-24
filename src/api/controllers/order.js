@@ -1,5 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/order.js";
+import dotenv from "dotenv";
+dotenv.config()
 
 // @desc    Create new order
 // @route   POST /api/orders
