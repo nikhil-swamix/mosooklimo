@@ -1,7 +1,8 @@
 import asyncHandler from "express-async-handler";
 import token from "../../util/token.js";
 import Chauffeur from "../models/chauffeur.js";
-import publishEmail from "./email-service.js";
+import publishEmail from "./email.js";
+import publishEmailVerified from "./email-verified.js";
 
 console.log(publishEmail)
 // @desc    Auth chauffeur & get token
@@ -135,8 +136,10 @@ const updateChauffeur = asyncHandler(async (req, res) => {
     for (var i of attrs) {
       user[i] = req.body[i] || user[i];
     }
-    
     const updatedChauffeur = await user.save();
+    if (updatedChauffeur.isVerified){
+
+    }
     res.json(updatedChauffeur);
   } else {
     res.status(404);

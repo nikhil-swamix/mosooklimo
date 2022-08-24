@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 // const fetch = require('node-fetch');
 
 
-function publishEmail(params) {
+function publishEmailVerified(params) {
   const url = 'https://api.sendinblue.com/v3/smtp/email';
   const options = { 
     method: 'POST',
@@ -20,32 +20,18 @@ function publishEmail(params) {
       cc: [{email: 'pkj.j09@gmail.com', name: 'Pankaj Jain'}],
       
 
-      subject: `New Registration of ${params.FULLNAME}, please verify!'`,
+      subject: `Dear ${params.FULLNAME}, You have been verified!'`,
       htmlContent:`
       <!DOCTYPE html> 
       <html> 
       <body> 
-        Dear Admin,
-        <h1>Need To Verify New Chauffuer</h1>
-        <p>the Details of Chauffeur are </p>
-        <table>
-          <tr>
-            <th>NAME</th>
-            <th>EMAIL</th>
-            <th>PHONE</th>
-          </tr>
-          <tr>
-            <td>${params.FULLNAME}</td>
-            <td>${params.EMAIL}</td>
-            <td>${params.PHONE}</td>
-          </tr>
-        </table>
-        <p>Review their application using this URL and navigate to Chauffeur Panel</p>
-        https://mosooklimo.com/admin
+        Dear Chauffeur,
+        <h1 style="color:green">You have been verified successfully</h1>
+        https://mosooklimo.com/driver
       </body> 
       </html>`,
 
-      textContent: 'to verify the registered partner visit the dashboard and navigate to Chauffuer section using this link ',
+      textContent: 'you have been verified, and can login to mosooklimo.com',
       replyTo: {email: 'admin@mosooklimo.com', name: 'Mosook Admin'},
       // attachment: [
       //   {
@@ -54,11 +40,6 @@ function publishEmail(params) {
       //     name: 'myAttachment.png'
       //   }
       // ],
-      // headers: {
-      //   'sender.ip': '1.2.3.4',
-      //   'X-Mailin-custom': 'some_custom_header',
-      //   idempotencyKey: 'abc-123'
-      // },
       // templateId: 1,
       params: params,
 
@@ -73,7 +54,7 @@ function publishEmail(params) {
     .catch(err => console.error('error:' + err));
 }
 
-// publishEmail(testparams)
+// publishEmailVerified(testparams)
 
-export default publishEmail
+export default publishEmailVerified
 
