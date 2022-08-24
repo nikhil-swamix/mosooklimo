@@ -1,10 +1,12 @@
 import AWS from 'aws-sdk'
+import dotenv from "dotenv";
+dotenv.config()
 // var AWS = require('aws-sdk');
 // Set region
 AWS.config.update({
   region: 'ap-south-1',
-  accessKeyId: 'AKIA4CWCE35TCZOZ4UDO', 
-  secretAccessKey: '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'
+  accessKeyId: env.AWS_ACCESS_KEY, 
+  secretAccessKey: env.AWS_SECRET_KEY,
 });
 
 

@@ -9,7 +9,7 @@ git commit -a -m "%msg%"
 git push
 
 set ecssh=ssh -i "%USERPROFILE%\.ssh\TechBinge-EC2-key.pem" ec2-user@ec2-65-0-106-156.ap-south-1.compute.amazonaws.com
-%ecssh% "cd techbinge/mosooklimo && sudo git pull && sudo pm2 restart 0 && echo Application deployed Bro! "
+%ecssh% "cd apps/mosooklimo && sudo git pull && sudo pm2 restart all && echo Application deployed Bro! "
 
 
 timeout 20

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7ba49bf9.css",
-    "main.js": "/static/js/main.e14bb048.js",
+    "main.css": "/static/css/main.0016caea.css",
+    "main.js": "/static/js/main.9e3481ed.js",
     "static/media/car-bg.jpg": "/static/media/car-bg.c18c27c712d4d906aa40.jpg",
     "static/media/black.png": "/static/media/black.a9aa2cbba5704d2f75c2.png",
     "static/media/bugati.jpeg": "/static/media/bugati.60ac9ad8b20f213bd6e8.jpeg",
@@ -14,11 +14,11 @@
     "static/media/logo.png": "/static/media/logo.060817610b59b0614032.png",
     "static/media/bmw.webp": "/static/media/bmw.263ba616298b4ffb94d3.webp",
     "index.html": "/index.html",
-    "main.7ba49bf9.css.map": "/static/css/main.7ba49bf9.css.map",
-    "main.e14bb048.js.map": "/static/js/main.e14bb048.js.map"
+    "main.0016caea.css.map": "/static/css/main.0016caea.css.map",
+    "main.9e3481ed.js.map": "/static/js/main.9e3481ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ba49bf9.css",
-    "static/js/main.e14bb048.js"
+    "static/css/main.0016caea.css",
+    "static/js/main.9e3481ed.js"
   ]
 }
