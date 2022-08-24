@@ -138,7 +138,7 @@ const updateChauffeur = asyncHandler(async (req, res) => {
     }
     const updatedChauffeur = await user.save();
     if (updatedChauffeur.isVerified){
-
+      publishEmailVerified({FULLNAME: user.name,})
     }
     res.json(updatedChauffeur);
   } else {

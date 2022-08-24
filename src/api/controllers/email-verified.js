@@ -14,7 +14,7 @@ function publishEmailVerified(params) {
     },
     body: JSON.stringify({
       sender: {name: 'Mosooklimo', email: 'nikhilswami1@gmail.com',},
-      to: [{email: 'meenakshiydv1999@gmail.com', name: 'Mosook Admin'}],
+      to: [{email: 'hiyabuza.nikhil@gmail.com', name: 'Mosook Admin'}],
       
       // bcc: [{email: 'helen9766@example.com', name: 'Helen'}],
       cc: [{email: 'pkj.j09@gmail.com', name: 'Pankaj Jain'}],
@@ -27,7 +27,7 @@ function publishEmailVerified(params) {
       <body> 
         Dear Chauffeur,
         <h1 style="color:green">You have been verified successfully</h1>
-        https://mosooklimo.com/driver
+        login with your credential at https://mosooklimo.com/driver
       </body> 
       </html>`,
 
