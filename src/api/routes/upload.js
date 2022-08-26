@@ -10,6 +10,16 @@ import dotenv from "dotenv";
 
 dotenv.config()
 
+const s3 = new S3Client({
+  credentials:{
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+  },
+  configuration:{
+  },
+  region:'ap-south-1',
+})
+
 const router = express.Router();
 const __dirname = path.resolve(path.dirname(''))
 
@@ -34,15 +44,6 @@ const hyperFileFilter = function(req, file, cb) { // Accept images only
   cb(null, true);
 };
 
-const s3 = new S3Client({
-  credentials:{
-    secretAccessKey: process.env.AWS_SECRET_KEY,
-    accessKeyId: process.env.AWS_ACCESS_KEY,
-  },
-  configuration:{
-  },
-  region:'ap-south-1',
-})
 
 
 
@@ -67,7 +68,7 @@ const upload = multer({
 router.post("/",upload,function (req, res, next) {
   /*DEBUG=Object.keys(res.req.files)*/
   let response=req?.file?.path || req?.files[0].path
-  console.log(res.req.files,)
+  // console.log(res.req.files,)
   res.json(res.req.files[0].location)
 
   // res.json(response.replace('\\','/'));

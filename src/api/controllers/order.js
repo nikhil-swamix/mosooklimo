@@ -1,19 +1,15 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/order.js";
+import Chauffeur from "../models/chauffeur.js";
+import publishSMS from "./api-sms.js";
+import publishEmail from "./api-email.js";
 
-
-// @desc    Create new order
-// @route   POST /api/orders
-// @access  Public
 const addOrderItems = asyncHandler(async (req, res) => {
   const order = new Order(req.body);
   const createdOrder = await order.save();
   res.status(201).json(createdOrder);
 });
 
-// @desc    Get order by ID
-// @route   GET /api/orders/:id
-// @access  Public
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
@@ -25,9 +21,6 @@ const getOrderById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get order by Phone Number
-// @route   GET /api/orders/:phone
-// @access  Public
 const getOrderByPhone = asyncHandler(async (req, res) => {
   const orders = await Order.find({ phone: req.params.phone })
     .sort({ _id: -1 })
@@ -40,9 +33,6 @@ const getOrderByPhone = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update order to paid
-// @route   GET /api/orders/:id/pay
-// @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   // console.log(order);
@@ -67,8 +57,6 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
 const updateOrderToCash = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
-  // console.log(order);
-
   if (order) {
     order.isPaid = true;
     order.paymentMethod = "cash";
@@ -81,9 +69,7 @@ const updateOrderToCash = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update order status , i,e pending, assigned or completed
-// @route   PUT /api/orders/:id/status
-// @access  Admin
+
 const updateOrderStatus = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   const { status } = req.body;
@@ -98,16 +84,22 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update order to assign driver , i,e assignTo field
-// @route   PUT /api/orders/assign/:id
-// @access  Admin
+
+// ROUTE: PUT /assign/:id
 const updateOrderAssign = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   const { driverId } = req.body;
+  const driver = await Chauffeur.findById(driverId);
+  console.log(driver)
   if (order) {
     order.assignTo = driverId;
     const updatedOrder = await order.save();
-
+    publishSMS({
+      priority:["Transactional","Promotional"][0],
+      targets:[order.phone],
+      timestamp: new Date().toISOString(),
+      message:`Mosooklimo: Dear VIP, we assigned "${driver.name}" with car [${driver.brand}-${driver.model} (${driver.color})] to pick you. he will call soon `,
+    })
     res.json(updatedOrder);
   } else {
     res.status(404);
@@ -115,9 +107,7 @@ const updateOrderAssign = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get loggedin driver's orders
-// @route   GET /api/orders/myorders
-// @access  Private
+
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ assignTo: req.user._id });
   if (orders) {
@@ -134,9 +124,7 @@ const getOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
-// @desc    Delete order
-// @route   DELETE /api/orders/:id
-// @access  Admin
+
 const deleteOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 

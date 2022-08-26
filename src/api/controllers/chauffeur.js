@@ -1,13 +1,13 @@
 import asyncHandler from "express-async-handler";
 import token from "../../util/token.js";
 import Chauffeur from "../models/chauffeur.js";
-import publishEmail from "./email.js";
-import publishEmailVerified from "./email-verified.js";
+import publishEmail from "./api-email.js";
+import publishEmailVerified from "./api-email-verified.js";
+import publishSMS from "./api-sms.js";
+import User from "../models/user.js";
 
-console.log(publishEmail)
-// @desc    Auth chauffeur & get token
-// @route   POST /api/chauffeurs/login
-// @access  Public
+// @N: Auth chauffeur & get token
+// @R:   POST /api/chauffeurs/login
 const authChauffeur = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await Chauffeur.findOne({ email });
@@ -25,9 +25,8 @@ const authChauffeur = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Register a chauffeurs
-// @route   POST /api/chauffeurs
-// @access  Public
+// @N: Register a chauffeurs
+// @R:   POST /api/chauffeurs
 const registerChauffeur = asyncHandler(async (req, res) => {
   const userExists = await Chauffeur.findOne(req.body );
   if (userExists) {
@@ -36,12 +35,14 @@ const registerChauffeur = asyncHandler(async (req, res) => {
   }
   
   const user = await Chauffeur.create(req.body );
-
   if (user) {
-    publishEmail({
-      FULLNAME: user.name,
-      EMAIL:user.email,
-      PHONE:user.phone,
+    var adminUser=(await User.findOne())
+    publishEmail({USER:user, NEMAIL:adminUser.nemail }) // NEMAIL=Notif Mail
+    publishSMS({
+      priority:["Transactional","Promotional"][0],
+      targets:[adminUser.phone],
+      timestamp: new Date().toISOString(),
+      message:`Mosooklimo Admin: Chauffeuer "${user.name}" has registered please verify by visiting mosooklimo.com/admin`,
     })
     res.status(201).json(user);
   } else {
@@ -50,9 +51,8 @@ const registerChauffeur = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get chauffeurs profile
-// @route   GET /api/chauffeurs/profile
-// @access  Private
+// @N: Get chauffeurs profile
+// @R:   GET /api/chauffeurs/profile
 const getChauffeurProfile = asyncHandler(async (req, res) => {
   const user = await Chauffeur.findById(req.user._id);
 
@@ -64,9 +64,8 @@ const getChauffeurProfile = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update chauffeurs profile
-// @route   PUT /api/chauffeurs/profile
-// @access  Private
+// @N: Update chauffeurs profile
+// @R:   PUT /api/chauffeurs/profile
 const updateChauffeurProfile = asyncHandler(async (req, res) => {
   const { email, phone, password } = req.body;
   const user = await Chauffeur.findById(req.user._id);
@@ -87,20 +86,17 @@ const updateChauffeurProfile = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get all chauffeurs
-// @route   GET /api/chauffeurs
-// @access  Admin
+// @N: Get all chauffeurs
+// @R:   GET /api/chauffeurs
 const getChauffeurs = asyncHandler(async (req, res) => {
   const users = await Chauffeur.find({});
   res.json(users);
 });
 
-// @desc    Delete chauffeur
-// @route   DELETE /api/chauffeurs/:id
-// @access  Admin
+// @N: Delete chauffeur
+// @R:   DELETE /api/chauffeurs/:id
 const deleteChauffeur = asyncHandler(async (req, res) => {
   const user = await Chauffeur.findById(req.params.id);
-
   if (user) {
     await user.remove();
     res.json({ message: "Chauffeur removed" });
@@ -110,9 +106,8 @@ const deleteChauffeur = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get chauffeur by ID
-// @route   GET /api/chauffeurs/:id
-// @access  Private/Admin
+// @N: Get chauffeur by ID
+// @R:   GET /api/chauffeurs/:id
 const getChauffeurById = asyncHandler(async (req, res) => {
   const user = await Chauffeur.findById(req.params.id).select("-password");
 
@@ -125,9 +120,8 @@ const getChauffeurById = asyncHandler(async (req, res) => {
 });
 
 
-// @desc    Update chauffeur
-// @route   PUT /api/chauffeurs/:id
-// @access  Admin
+// @N: Update chauffeur
+// @R:   PUT /api/chauffeurs/:id
 const updateChauffeur = asyncHandler(async (req, res) => {
   const user = await Chauffeur.findById(req.params.id);
   // console.log(Object.keys(Chauffeur.schema.obj))
@@ -138,7 +132,13 @@ const updateChauffeur = asyncHandler(async (req, res) => {
     }
     const updatedChauffeur = await user.save();
     if (updatedChauffeur.isVerified){
-      publishEmailVerified({FULLNAME: user.name,})
+      publishEmailVerified({USER: user,})
+      publishSMS({
+        priority:["Transactional","Promotional"][0],
+        targets:[(await User.findOne()).phone],
+        timestamp: new Date().toISOString(),
+        message:`Mosooklimo: Dear Partner '${user.name}'  on ${new Date().toLocaleString('eu')}, We are happy to inform you that you are now verified & can login to website`,
+      })
     }
     res.json(updatedChauffeur);
   } else {
@@ -209,7 +209,6 @@ const getActiveCitiesOfChauffeurs = asyncHandler(async (req, res) => {
     throw new Error("not found");
   }
 });
-
 
 
 export {

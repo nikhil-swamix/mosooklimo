@@ -185,21 +185,16 @@
               <div class="col-lg-4">
                 <div class="input-group mb-4 " title="add phone number with country code!">
                   <span class="w-100">
-                    <input type="tel" name="phone" placeholder="Phone : 98765 43210"  class="w-100" id="phone" maxlength="10">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/js/intlTelInput.min.js" integrity="sha512-Po9nSdYOcWIcoADdRjkAbRYPpR8OHjxzA/3RDUERZcDewTLzRTxbG4bUX7Sr7lVEcO3wTCzphdOBWgNFKVmxaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    <input type="tel" name="phone" placeholder="Phone with +code"  class="w-100" id="phone">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/js/intlTelInput-jquery.min.js" integrity="sha512-Bc9LELGc9+AYg+/BYBR9O8OEc3JrwZi8OHFwdTqYeYymMUpexQLkp01q/xTMyS3aE8TLdMSV1W3at2pBo4BlSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.16/css/intlTelInput.css" integrity="sha512-gxWow8Mo6q6pLa1XH/CcH8JyiSDEtiwJV78E+D+QP0EVasFs8wKXq16G8CLD4CJ2SnonHr4Lm/yY2fSI2+cbmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <script type="text/javascript">
-                      $(document).ready(function() {
-                        intlTelInput($("#phone")[0],{
-                          initialCountry: "auto",
-                          geoIpLookup: function(callback) {
-                            callback('ag')
-                            fetch('https://ipapi.co/json/')
-                            .then(response => {if ( response.ok ) {return response.json() } throw new Error('Failed: ' + response.status)})
-                            .then(ipjson => {console.log('IPINFO: Country Resolved From IP'); callback(ipjson.country) })
-                            .catch(e => {console.log('IPINFO ERROR')})
-                          }
-                        });
+                      intelinstance = $("#phone").intlTelInput({
+                        initialCountry:"in",
+                        hiddenInput:"",
+                        preferredCountries: ["ae","us","sa","in", ],
+                        separateDialCode:true,
+                        utilsScript: "https://raw.githack.com/jackocnr/intl-tel-input/master/build/js/utils.js"
                       });
                     </script>
                   </span>
@@ -455,7 +450,7 @@
                     postdata ={
                       name: $("#name").val(),
                       email: $("#email").val(),
-                      phone: $("#phone").val(),
+                      phone: intelinstance.intlTelInput('getNumber'),
                       password: $("#password").val(),
                       country:$("#country").val(),
                       state:$("#state").val(),

@@ -11,6 +11,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+    },    
+    nemail: { //Notification email
+      type: String,
+      required: true,
+      unique: true,
     },
     phone: {
       type: String,

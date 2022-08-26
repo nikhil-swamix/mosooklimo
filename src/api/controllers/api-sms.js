@@ -5,14 +5,14 @@ dotenv.config()
 // Set region
 AWS.config.update({
   region: 'ap-south-1',
-  accessKeyId: env.AWS_ACCESS_KEY, 
-  secretAccessKey: env.AWS_SECRET_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY, 
+  secretAccessKey: process.env.AWS_SECRET_KEY,
 });
 
 
 var configtemplate={
   priority:["Transactional","Promotional"][0],
-  targets:['+919959389649','+919871056158'],
+  targets:['+919959389649'],
   timestamp: new Date().toISOString(),
   message:'Dear Admin Chauffeuer [Md Qureshi] applied to Mosooklimo please verify'
 }
@@ -21,8 +21,8 @@ var configtemplate={
 function publishSMS(config) {
   config.targets.forEach((target)=>{
     var params = {
-      Message: `${config.timestamp} ${config.priority} ${config.message}`,
-      PhoneNumber: target,
+      Message: `${config.message}`,
+      PhoneNumber:  target.startsWith('+') ? target :'+'+target,
       MessageAttributes: {
           'AWS.SNS.SMS.SMSType': {
              DataType: 'String',

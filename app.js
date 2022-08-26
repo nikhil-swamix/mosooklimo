@@ -3,7 +3,7 @@ import airport from "./src/api/routes/airport.js";
 import axios from "axios";
 import blog from "./src/api/routes/blog.js";
 import chauffeur from "./src/api/routes/chauffeur.js";
-import connectDB from "./src/database/connectDB.js";
+import "./src/database/connectDB.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import enquiry from "./src/api/routes/enquiry.js";
@@ -13,14 +13,13 @@ import orderLux from "./src/api/routes/orderLux.js";
 import path from "path";
 import staticData from "./src/api/routes/static.js";
 import upload from "./src/api/routes/upload.js";
-import user from "./src/api/routes/user.js";
+import user from "./src/api/routes/admin.js";
 import { notFound, errorHandler } from "./src/util/error.js";
 import fileupload from 'express-fileupload' 
 import bodyParser  from 'body-parser' 
 
 
 dotenv.config();
-connectDB();
 const app = express();
 const __dirname = path.resolve();
 

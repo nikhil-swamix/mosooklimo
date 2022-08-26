@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 // const fetch = require('node-fetch');
 
 
-function publishEmailVerified(params) {
+function publishEmail(params) {
   const url = 'https://api.sendinblue.com/v3/smtp/email';
   const options = { 
     method: 'POST',
@@ -14,24 +14,39 @@ function publishEmailVerified(params) {
     },
     body: JSON.stringify({
       sender: {name: 'Mosooklimo', email: 'nikhilswami1@gmail.com',},
-      to: [{email: 'hiyabuza.nikhil@gmail.com', name: 'Mosook Admin'}],
+      // to: [{email: 'meenakshiydv1999@gmail.com', name: 'Mosook Admin'}],
+      to: [{email: params.NEMAIL, name: 'Mosook Admin'}],
       
       // bcc: [{email: 'helen9766@example.com', name: 'Helen'}],
-      cc: [{email: 'pkj.j09@gmail.com', name: 'Pankaj Jain'}],
+      // cc: [{email: 'pkj.j09@gmail.com', name: 'Pankaj Jain'}],
       
 
-      subject: `Dear ${params.FULLNAME}, You have been verified!'`,
+      subject: `New Registration of ${params.USER.name}, please verify!'`,
       htmlContent:`
       <!DOCTYPE html> 
       <html> 
       <body> 
-        Dear Chauffeur,
-        <h1 style="color:green">You have been verified successfully</h1>
-        login with your credential at https://mosooklimo.com/driver
+        Dear Admin, on ${new Date()}
+        <h1>New Chauffuer Registered on our platform</h1>
+        <p>Verification needed, the Details of Chauffeur are </p>
+        <table>
+          <tr>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+          </tr>
+          <tr>
+            <td>${params.USER.name}</td>
+            <td>${params.USER.email}</td>
+            <td>${params.USER.phone}</td>
+          </tr>
+        </table>
+        <p>Review their application using this URL and navigate to Chauffeur Panel</p>
+        https://mosooklimo.com/admin
       </body> 
       </html>`,
 
-      textContent: 'you have been verified, and can login to mosooklimo.com',
+      textContent: 'to verify the registered partner visit the dashboard and navigate to Chauffuer section using this link ',
       replyTo: {email: 'admin@mosooklimo.com', name: 'Mosook Admin'},
       // attachment: [
       //   {
@@ -54,7 +69,7 @@ function publishEmailVerified(params) {
     .catch(err => console.error('error:' + err));
 }
 
-// publishEmailVerified(testparams)
+// publishEmail(testparams)
 
-export default publishEmailVerified
+export default publishEmail
 
