@@ -135,7 +135,7 @@ const updateChauffeur = asyncHandler(async (req, res) => {
       publishEmailVerified({USER: user,})
       publishSMS({
         priority:["Transactional","Promotional"][0],
-        targets:[(await User.findOne()).phone],
+        targets:[user.phone],
         timestamp: new Date().toISOString(),
         message:`Mosooklimo: Dear Partner '${user.name}'  on ${new Date().toLocaleString('eu')}, We are happy to inform you that you are now verified & can login to website`,
       })
