@@ -94,11 +94,13 @@ const updateOrderAssign = asyncHandler(async (req, res) => {
   if (order) {
     order.assignTo = driverId;
     const updatedOrder = await order.save();
+    publishEmail(
+      )
     publishSMS({
       priority:["Transactional","Promotional"][0],
       targets:[order.phone],
       timestamp: new Date().toISOString(),
-      message:`Mosooklimo: Dear VIP, we assigned "${driver.name}" with car [${driver.brand}-${driver.model} (${driver.color})] to pick you. he will call soon `,
+      message:`Mosooklimo: Dear VIP, we assigned "${driver.name}" with car [${driver.brand}-${driver.model} (${driver.color})] to pick you. he will call soon.`,
     })
     res.json(updatedOrder);
   } else {
