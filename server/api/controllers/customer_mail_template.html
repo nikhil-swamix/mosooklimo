@@ -1,0 +1,82 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "RentalCarReservation",
+  "reservationNumber": "546323",
+  "reservationStatus": "http://schema.org/Confirmed",
+  "url": "https://mosooklimo.com/trackorder.php",
+  "underName": {
+    "@type": "Person",
+    "name": "{{user.name}}",
+    "email": "{{user.email}}"
+  },
+  "programMembership": {
+    "@type": "ProgramMembership",
+    "memberNumber": "{{user.phone}}",
+    "program": "VIP"
+  },
+  "bookingAgent": {
+    "@type": "Organization",
+    "name": "Mosook Limo International",
+    "url": "https://mosooklimo.com/"
+  },
+  "bookingTime": "2027-01-14T13:05:00-05:00",
+  "modifiedTime": "",
+  "cancelReservationUrl": "https://mosooklimo.com/customer-service.php",
+  "modifyReservationUrl": "https://mosooklimo.com/customer-service.php",
+  "potentialAction": [
+    {
+      "@type": "CancelAction",
+      "target": "https://mosooklimo.com/customer-service.php"
+    },
+    {
+      "@type": "EditAction",
+      "target": "https://mosooklimo.com/customer-service.php"
+    },
+  ],
+  "reservationFor": {
+    "@type": "RentalCar",
+    "name": "  ({{chauffeur.color}})",
+    "model": "{{chauffeur.model}}",
+    "brand": {
+      "@type": "Brand",
+      "name": "{{chauffeur.brand}}"
+    },
+    "description": "Sedan 4 Door, High Safety Luxurious VIP Car. ",
+    "rentalCompany": {
+      "@type": "Organization",
+      "name": "MosookLimo"
+    }
+  },
+  "pickupLocation": {
+    "@type": "Place",
+    "name": "Hertz San Diego Airport",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1500 Orange Avenue",
+      "addressLocality": "San Diego",
+      "addressRegion": "CA",
+      "postalCode": "94043",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-800-123-4567"
+  },
+  "pickupTime": "2027-08-05T16:00:00-07:00",
+  "dropoffLocation": {
+    "@type": "Place",
+    "name": "Hertz LAX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1234 First Street",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "postalCode": "94043",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-800-123-4567"
+  },
+  "dropoffTime": "2027-08-06T20:00:00-07:00",
+  "price": "119.00",
+  "priceCurrency": "USD"
+}
+</script>

@@ -120,7 +120,7 @@ const getChauffeurById = asyncHandler(async (req, res) => {
 });
 
 
-// @N: Update chauffeur
+// @N: Update chauffeur + Verify Chauffeur
 // @R:   PUT /api/chauffeurs/:id
 const updateChauffeur = asyncHandler(async (req, res) => {
   const user = await Chauffeur.findById(req.params.id);

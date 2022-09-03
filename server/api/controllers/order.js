@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import Order from "../models/order.js";
 import Chauffeur from "../models/chauffeur.js";
 import publishSMS from "./api-sms.js";
-import publishEmail from "./api-email.js";
+import publishEmailCustomer from "./api-email-customer.js";
 
 const addOrderItems = asyncHandler(async (req, res) => {
   const order = new Order(req.body);
@@ -90,12 +90,11 @@ const updateOrderAssign = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   const { driverId } = req.body;
   const driver = await Chauffeur.findById(driverId);
-  console.log(driver)
+  // console.log(driver)
   if (order) {
     order.assignTo = driverId;
     const updatedOrder = await order.save();
-    publishEmail(
-      )
+    publishEmailCustomer( {ORDER:order,CHAUFFEUR:driver})
     publishSMS({
       priority:["Transactional","Promotional"][0],
       targets:[order.phone],

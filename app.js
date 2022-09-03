@@ -1,20 +1,20 @@
 // import uploadRoutes from "./routes/uploadRoutes.js";
-import airport from "./src/api/routes/airport.js";
+import airport from "./server/api/routes/airport.js";
 import axios from "axios";
-import blog from "./src/api/routes/blog.js";
-import chauffeur from "./src/api/routes/chauffeur.js";
-import "./src/database/connectDB.js";
+import blog from "./server/api/routes/blog.js";
+import chauffeur from "./server/api/routes/chauffeur.js";
+import "./server/database/connectDB.js";
 import cors from "cors";
 import dotenv from "dotenv";
-import enquiry from "./src/api/routes/enquiry.js";
+import enquiry from "./server/api/routes/enquiry.js";
 import express from "express";
-import order from "./src/api/routes/order.js";
-import orderLux from "./src/api/routes/orderLux.js";
+import order from "./server/api/routes/order.js";
+import orderLux from "./server/api/routes/orderLux.js";
 import path from "path";
-import staticData from "./src/api/routes/static.js";
-import upload from "./src/api/routes/upload.js";
-import user from "./src/api/routes/admin.js";
-import { notFound, errorHandler } from "./src/util/error.js";
+import staticData from "./server/api/routes/static.js";
+import upload from "./server/api/routes/upload.js";
+import user from "./server/api/routes/admin.js";
+import { notFound, errorHandler } from "./server/util/error.js";
 import fileupload from 'express-fileupload' 
 import bodyParser  from 'body-parser' 
 
