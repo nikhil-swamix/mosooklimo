@@ -288,12 +288,51 @@ function publishEmailCustomer(params) {
         <h1>Your booking has been confirmed by admin and assigned a chauffeuer</h1>
         <p>Please Go through your travel itenary, the Details of Trip are given below </p>
         
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+        <div class="card" style="width: 100%">
+          <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2" width="500" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Your Booking Details Are Given Below</h5>
+            <p class="card-text">
+              Thank you for booking with mosooklimo, your trip is confirmed and chauffeur is on the way!
+              Hope you have a safe journey. Please read our guidelines and terms and conditions before boarding for smoother experience.
+              if you have any queries contact details
+              <br>
+              Telephone :  +966-920001687. 
+              <br>
+              Whatsapp :   +966-567495913. 
+              <br>
+              Email :  booking@mosooklimo.com 
+            </p>
+            <table id="customers">
+              <tr>
+                <th>Detail</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>Pickup Address</td>
+                <td>${params.ORDER.pickupAddress}</td>
+              </tr>
+              <tr>
+                <td>Destination Address</td>
+                <td>${params.ORDER.destinationAddress}</td>
+              </tr>
+              <tr>
+                <td>Pickup Time</td>
+                <td>${params.ORDER.bookingTime}${params.ORDER.bookingDate}</td>
+              </tr>
+              <tr>
+                <td>Distance</td>
+                <td>${params.ORDER.distance}</td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td>${params.ORDER.price}</td>
+              </tr>
+              <tr>
+                <td>Vehicle</td>
+                <td>${params.ORDER.vehicleClass}${params.ORDER?.assignTo.brand}</td>
+              </tr>
+            </table>
           </div>
         </div>
 
