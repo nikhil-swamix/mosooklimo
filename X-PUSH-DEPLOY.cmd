@@ -3,12 +3,11 @@
 # sudo pm2 start node -- app.js
 
 set /p msg="Deploy notes - Commit message: "
-call `BUILD.cmd
 git add -A
 git commit -a -m "%msg%"
 git push
 
-set ecssh=ssh -i "%USERPROFILE%\.ssh\TechBinge-EC2-key.pem" ec2-user@ec2-65-0-106-156.ap-south-1.compute.amazonaws.com
+set ecssh=ssh -i ".ssh\TechBinge-EC2-key.pem" ec2-user@ec2-65-0-106-156.ap-south-1.compute.amazonaws.com
 %ecssh% "cd apps/mosooklimo && sudo git pull && sudo pm2 restart all && echo Application deployed Bro! "
 
 
