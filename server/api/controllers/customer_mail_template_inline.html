@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Emailer</title>
+</head>
+
+<body width="100%" style="margin: 0; padding: 0 !important;  background-color: #fff; font-family: sans-serif; color:#111;">
+  <center style="width: 100%; background-color: #fff;">
+    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+    </div>
+    <div style="max-width: 600px; margin: 0 auto; padding: 16px" class="email-container">
+      <!-- BEGIN BODY -->
+      <table align="center" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; background-color: #fff;">
+        <tr>
+          <td valign="top" class="bg_white" style="padding-top:2em;">
+            <table align="center" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; background-color: #fff;">
+              <tr>
+                <td class="logo" style="text-align: center;min-height:180px;">
+                  <img src="https://mosook.com/mosook/wp-content/uploads/2022/01/NEW-e1641190205381.png" width="180" height="60px" >
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- end tr -->
+        <tr>
+          <td valign="middle" class="hero bg_white">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td style="text-align: center; ">
+                  <div class="text ">
+                    <h1>Dear VIP {{ORDER.name}},</h1>
+                    <p style="font-size: 16px; line-height: 26px; margin-bottom: 30px;">
+                      Thank You for booking with Mosooklimo, Your trip is confirmed and chauffer is on the way! Hope you have a safe journey. 
+                    </p>
+                  </div>
+                  <div class="te" style=" max-width: 100%; margin: 0 auto; border-radius: 24px;">
+                    <img src="https://techbinge.org/wp-content/uploads/2022/09/Mosook.png" alt="" max="0" width="100%" style="min-height: 20em; border-radius: 2em; box-shadow: 0 0 3em #6663;">
+                    <div class="text ">
+                      <h2 style="line-height: 26px; font-weight: 600; margin-bottom: 30px; color:#111 ">Here Is the Summary of the trip </h2>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center; display:flex;border-radius:10px;
+                background:#fff;">
+              </td>
+            </tr>
+
+
+
+            <tr align="center" cellspacing="0" cellpadding="0" border="0" width="100%" style=" ">
+              <td style="background-color: #fcac43;border-radius: 1em; padding: 0.5em; box-shadow: 0 0 1em #fcac43;">
+                <table style="width: 80%;">
+                  <tr>
+                    <td>
+                      <div style="text-align:center; background-color: #fff; padding:0.5em; color:#000; border-radius: 1em;">
+                        <span style="color:#fcac43"> <b>Pickup Address</b> </span>
+                        <p style="font-size: 1.5em; margin: 0.5em;">
+                          {{ORDER.pickupAddress}}, <span>{{ORDER.bookingTime}} on {{ORDER.bookingDate}} </span> 
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="text-align:center; background-color: #fff; padding:0.5em; margin-top: 0.5em; color:#000;border-radius: 1em;">
+                        <span style="color:#fcac43"><b>Destination Address</b></span>
+                        <p style="font-size: 1.5em; margin: 0.5em;">{{ORDER.destinationAddress}} </p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+
+
+
+            <tr>
+              <td style="padding: 1em 0;">
+                <h2 style="text-align: center; line-height:15px;color:#d8b65d">Passenger Details</h2>
+                <hr>
+                <table width="100%" align="center" style="">
+                  <div style="max-width: 500px;">
+                    <thead>
+                      <tr style="font-size: 18px;color:#d8b65d;">
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Phone</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ORDER.name}}</td>
+                        <td style="text-decoration:none;">{{ORDER.email}}</td>
+                        <td>+{{ORDER.phone}}</td>
+                      </tr>
+                    </tbody>
+                  </div>
+                </table>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td style="padding: 1em 0;">
+                <h2 style="text-align: center; line-height:15px;color:#d8b65d;">Trip Details</h2>
+                <hr>
+                <table width="100%" align="center" style="">
+                  <div style="max-width: 500px;">
+                    <thead>
+                      <tr style="font-size: 18px;color:#d8b65d ">
+                        <td>Distance</td>
+                        <td>Price</td>
+                        <td>Vehicle</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>{{ORDER.distance}}</span> km</td>
+                        <td><span>${{ORDER.price}}</span></td>
+                        <td><span>{{ORDER.vehicleClass}}{{CHAUFFEUR.color}}</span></td>
+                      </tr>
+                    </tbody>
+                  </div>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="text-align: center; display:flex;border-radius:10px; background:#fff; ">
+                <div class="te " style=" max-width: 100%; margin: 0 auto; border-radius: 24px; ">
+                  <img src="https://techbinge.org/wp-content/uploads/2022/09/credit-card.png" alt=" " width="50px" style="margin-bottom: -20px;">
+                  <p style="padding-top:0px; line-height: 15px;"><a href="# " style="background:none; color: rgb(183, 180, 180); border-radius: 6px; text-decoration:none; border: 1px solid #fff;font-size:13px; ">Credit Card in Your name ready</a></p>
+                </div>
+                <div class="te " style=" max-width: 100%; margin: 0 auto; border-radius: 24px; ">
+                  <img src="https://techbinge.org/wp-content/uploads/2022/09/driver-license.png" alt=" " width="50px" style="margin-bottom: -20px;">
+                  <p style="padding-top:0px; line-height: 15px;"><a href="# " style="background:none; color: rgb(183, 180, 180); border-radius: 6px; border: 1px solid #fff; text-decoration:none;font-size:13px; ">Make Sure to have your valid drivers license</a></p>
+                </div>
+                <div class="te " style=" max-width: 100%; margin: 0 auto; border-radius: 24px; ">
+                  <img src="https://techbinge.org/wp-content/uploads/2022/09/car-key.png" alt=" " width="50px" style="margin-bottom: -20px;">
+                  <p style="padding-top:0px; line-height: 15px;"><a href="# " style="background:none; color: rgb(183, 180, 180); text-decoration:none;border-radius: 6px; border: 1px solid #fff;font-size:13px; ">$99 deposit will be held at pickup.</a></p>
+                </div>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table bgcolor=" " border="0 " cellpadding="0 " cellspacing="0 " width="100% " align="center " style="background:#fff; color:rgb(183, 180, 180);">
+      <tbody>
+        <td style="color: #000; line-height:20px; font-size:12px; line-height:normal; font-weight:400;max-width: 530px; ">
+          <p>Please read our guidelines,terms and conditions
+            <!-- Dynamic Link start -->
+            <a href="https://mosooklimo.com/terms.php" style="color:#d8b65d;">Terms and Conditions</a>,
+            <a href="https://mosooklimo.com/policy.php" style="color:#d8b65d;">Privacy policy</a>
+            <!-- Dynamic Link start -->
+          </p>
+          <p style="line-height: normal; "> Visit Our Site
+            <!-- Dynamic Link start -->
+            <a href="https://mosooklimo.com/" style="color:#d8b65d;">mosooklimo.com</a>
+            <!-- Dynamic Link End-->
+          </p>
+        </td>
+        <tr>
+          <td style="height: 100px "></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</center>
+</body>
+
+</html>

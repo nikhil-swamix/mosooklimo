@@ -41,7 +41,6 @@ const orderSchema = mongoose.Schema(
       type: Number,
       require: true,
     },
-
     vehicleClass: {
       type: String,
       require: true,
