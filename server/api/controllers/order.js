@@ -23,8 +23,8 @@ const getOrderById = asyncHandler(async (req, res) => {
 
 const getOrderByPhone = asyncHandler(async (req, res) => {
   const orders = await Order.find({ phone: req.params.phone })
-    .sort({ _id: -1 })
-    .limit(3);
+  .sort({ _id: -1 })
+  .limit(3);
   if (orders) {
     res.json(orders);
   } else {
@@ -90,13 +90,12 @@ const updateOrderAssign = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   const { driverId } = req.body;
   const driver = await Chauffeur.findById(driverId);
-  // console.log(driver)
   if (order) {
     order.assignTo = driverId;
     const updatedOrder = await order.save();
-    publishEmailCustomer( {ORDER:order,CHAUFFEUR:driver})
+    publishEmailCustomer( {ORDER:order, CHAUFFEUR:driver});
     publishSMS({
-      priority:["Transactional","Promotional"][0],
+      priority:["Transactional", "Promotional"][0],
       targets:[order.phone],
       timestamp: new Date().toISOString(),
       message:`Mosooklimo: Dear VIP, we assigned "${driver.name}" with car "${driver.brand}-${driver.model} ${driver.color}" to pick you at "${order.pickupAddress}". he will call soon.`,
