@@ -9,7 +9,7 @@ import dotenv from "dotenv";
 import enquiry from "./server/api/routes/enquiry.js";
 import express from "express";
 import order from "./server/api/routes/order.js";
-import orderLux from "./server/api/routes/orderLux.js";
+import orderRental from "./server/api/routes/orderRental.js";
 import path from "path";
 import staticData from "./server/api/routes/static.js";
 import upload from "./server/api/routes/upload.js";
@@ -47,7 +47,7 @@ app.get("/api/directions/:p1/:p2", (req, res) => {
 app.use("/api/users", user);
 app.use("/api/chauffeurs", chauffeur);
 app.use("/api/orders", order);
-app.use("/api/rental", orderLux);
+app.use("/api/rental", orderRental);
 app.use("/api/airports", airport);
 app.use("/api/data", staticData);
 app.use("/api/blogs", blog);
@@ -64,7 +64,7 @@ app.use('/driver', express.static('./driver')) // frontend driver static folder
 app.use('/utilities', express.static('./utilities')) // utilities
 
 
-app.get('/101fd5534aad34d24acdd10fb99d2523.html', (req, res) => res.status(200).send(''));
+app.get('/101fd5534aad34d24acdd10fb99d2523.html', (req, res) => res.status(200).send('')); //verification
 
 var frontend_dir='home/' 
 if (process.env.NODE_ENV=='dev') {

@@ -151,6 +151,6 @@ const orderLuxSchema = mongoose.Schema(
   }
 );
 
-const OrderLux = mongoose.model("OrderLux", orderLuxSchema);
+const orderRental = mongoose.model("orderRental", orderLuxSchema);
 
-export default OrderLux;
+export default orderRental;

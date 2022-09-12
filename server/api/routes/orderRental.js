@@ -12,7 +12,7 @@ import {
   getOrderByPhone,
   deleteOrder,
   updateOrderToCash,
-} from "../controllers/orderLux.js";
+} from "../controllers/orderRental.js";
 import { protect, admin, protectChauffeur } from "../middlewares/auth.js";
 
 router.route("/")
