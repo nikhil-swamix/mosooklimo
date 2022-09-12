@@ -8,6 +8,19 @@
 			"problemMatcher": [],
 			"label": "npm: start - home-src",
 			"detail": "react-scripts start"
-		}
+		},
+		{
+			"label": "React Frontend Build",
+			"type": "shell",
+			"command": "./`BUILD.cmd",
+			"windows": {
+			  "command": "./`BUILD.cmd"
+			},
+			"group": "script",
+			"presentation": {
+			  "reveal": "always",
+			  "panel": "new"
+			}
+		  }
 	]
 }

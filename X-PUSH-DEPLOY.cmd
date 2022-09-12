@@ -11,4 +11,4 @@ set ecssh=ssh -i ".ssh\TechBinge-EC2-key.pem" ec2-user@ec2-65-0-106-156.ap-south
 %ecssh% "cd apps/mosooklimo  && git pull && npm i && sudo pm2 restart all && echo Application deployed Bro! "
 
 
-timeout 20
+timeout 10

@@ -1,3 +1,2 @@
-cd ./home-src
-cmd /c build.bat 
-cd ..
+cd ./home-src 
+cmd /c build.bat && cd ..
